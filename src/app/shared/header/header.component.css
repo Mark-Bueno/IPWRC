@@ -1,0 +1,82 @@
+button {
+  margin-top: 0.5em;
+  cursor: pointer;
+  padding: 0 1em 0 1em;
+  font-size: 90%;
+  border: none;
+  color: #fff;
+  outline: none;
+  background-color: transparent;
+}
+
+.buttongroup {
+  /*margin-left: 68%;*/
+}
+
+.fa {
+  padding: 0.5em 0.25em 0.5em 0.25em;
+  color: white;
+}
+
+.logo {
+}
+
+mat-toolbar {
+
+  width: 100%;
+  height: 80px;
+  background: rgb(127, 69, 252);
+  background: radial-gradient(circle, rgba(127, 69, 252, 1) 0%, rgba(131, 58, 180, 1) 100%);
+  border-bottom: 4px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  text-align: center;
+  padding: 0.5em 0 0.5em 0;
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.dropdown:hover .dropdown-content {
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+
+}
+
+.fa-id-badge {
+  color: black;
+}
+
+.fa-sign-out {
+  color: black;
+}

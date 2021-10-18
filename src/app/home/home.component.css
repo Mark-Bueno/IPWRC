@@ -1,0 +1,52 @@
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  font-weight: bold;
+  font-size: 22px;
+  transition: 0.6s ease;
+  border-radius: 3px 3px 3px 3px;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.3);
+
+
+}
+
+i {
+  margin-top: 6px;
+}
+
+.slider {
+  padding-top: 1.5em;
+  display: flex;
+  justify-content: center;
+}
+
+
+.next {
+  right: 23%;
+
+}
+
+.prev {
+  left: 23%;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.imageContainer {
+  text-align: center;
+}
+
+.container1 {
+  position: absolute;
+  text-align: center;
+  bottom: 3%;
+  width: 58%;
+  left: 18%;
+}

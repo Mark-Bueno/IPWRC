@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="loginCard">
+  <mat-card class="mat-card" style="background-color: white; border-radius: 20px">
+    <div class="loginContainer">
+      <mat-card-header>
+        <mat-card-title><h3>Shopping Cart</h3></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let product of cartProducts?.getCartProducts()">
+            {{product?.name}} : {{product?.price}}
+          </li>
+          <li>Total price: {{calculateTotalPrice()}}</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-footer>
+        <button class="btn" (click)="buyProducts()">
+          <i class="fa fa-money"></i>Buy Now
+        </button>
+        <button class="btn" (click)="clearCart()">
+          <i class="fa fa-shopping-cart"></i>Clear Cart
+        </button>
+      </mat-card-footer>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div>
+  <h2>Produten</h2>
+  <ul>
+    <li *ngFor="let product of products">
+      <mat-card (click)="goToProductInformation(product)">
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-content>
+          <img id="product" src="..//assets/images/{{product.imagePath}}" alt="Image not found." width="120px" height="120px"
+               style="border-radius: 10px;">
+        </mat-card-content>
+        <mat-card-footer>{{product.price}}</mat-card-footer>
+      </mat-card>
+    </li>
+  </ul>
+</div>

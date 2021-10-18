@@ -1,0 +1,36 @@
+div {
+  text-align: center;
+}
+
+h2 {
+  padding-top: 1em;
+  font-weight: normal;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 3em;
+  grid-row-gap: 3em;
+  list-style: none;
+  margin: 0;
+  padding: 2em;
+}
+
+mat-card {
+  text-align: center;
+  cursor: pointer;
+}
+
+mat-card-title {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+mat-card-footer{
+  padding-bottom: 1em;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 0 1px 0px 2px rgba(0, 0, 0, 0.2);
+}

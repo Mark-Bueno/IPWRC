@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="loginCard">
+  <mat-card class="mat-card" style="background-color: white; border-radius: 20px">
+    <div class="loginContainer">
+      <form class="form-container" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div>
+          <label class="text">Username</label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="Uw gebruikersnaam"
+                 name="username"
+                 formControlName="loginUsername">
+        </div>
+        <div>
+          <label class="text" id="password">Password</label>
+          <input type="password"
+                 class="form-control"
+                 placeholder="Uw wachtwoord"
+                 name="password"
+                 formControlName="loginPassword">
+        </div>
+        <div>
+          <div class="button">
+            <button type="submit" class="btn" [disabled]="!loginForm.valid">Inloggen</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </mat-card>
+</div>

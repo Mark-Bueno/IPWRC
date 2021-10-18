@@ -1,0 +1,54 @@
+mat-card {
+  width: 500px;
+  border-style: solid;
+  border-color: #394365;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+.loginCard {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 87%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+p{
+  padding: 1em 0 0 0 ;
+}
+
+mat-card {
+  text-align: center;
+}
+
+mat-card-title {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+mat-card-footer {
+  padding-bottom: 1em;
+}
+
+button {
+  background-color: black;
+  color: white;
+  width: 9em;
+}
+
+button:hover {
+  color: white;
+}
+
+i {
+  padding-right: 0.5em;
+}
+
+
+
