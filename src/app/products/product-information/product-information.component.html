@@ -4,10 +4,10 @@
     <div class="loginContainer">
       <mat-card-header>
         <mat-card-title><h3>{{product?.name}}</h3></mat-card-title>
-        <mat-card-subtitle>{{product?.price}}</mat-card-subtitle>
+        <mat-card-subtitle>€{{product?.price | number : '1.2-2'}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <img id="product" src="../assets/images/{{product?.imagePath}}" alt="Image not found." width="120px"
+        <img id="product" src="{{product?.imagePath}}" alt="Image not found." width="120px"
              height="120px"
              style="border-radius: 10px;">
         <p>{{product?.description}}</p>
@@ -19,5 +19,3 @@
       </mat-card-footer>
     </div>
   </mat-card>
-</div>
-

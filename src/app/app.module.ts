@@ -8,14 +8,12 @@ import {SharedModule} from './shared/shared.module';
 import {HomeComponent} from './home/home.component';
 import {MatCardModule} from '@angular/material';
 import {ProductsModule} from './products/products.module';
-import { CartComponent } from './cart/cart.component';
 import {HttpClientModule} from '@angular/common/http';
+import {CartModule} from './cart/cart.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +23,9 @@ import {HttpClientModule} from '@angular/common/http';
     SharedModule,
     MatCardModule,
     ProductsModule,
-    HttpClientModule
+    HttpClientModule,
+    CartModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

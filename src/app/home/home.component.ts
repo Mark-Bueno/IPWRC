@@ -8,7 +8,9 @@ import {Component, OnInit} from '@angular/core';
 export class HomeComponent implements OnInit {
 
   index = 0;
-  images = ['../assets/images/model_stairs.jpg', '../assets/images/lotion.jpg'];
+  images = ['https://primedia.primark.com/i/primark/210070147-01?w=1000&h=1000&img404=missing_product&v=1638144666104&locale=nl-*,en-*,*',
+    'https://primedia.primark.com/i/primark/210067018-01?w=1000&h=1000&img404=missing_product&v=1638145689433&locale=nl-*,en-*,*',
+  'https://primedia.primark.com/i/primark/210066420-01?w=1000&h=1000&img404=missing_product&v=1638145755132&locale=nl-*,en-*,*'];
 
   constructor() {
   }

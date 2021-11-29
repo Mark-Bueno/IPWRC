@@ -24,7 +24,6 @@ p{
 }
 
 mat-card {
-  text-align: center;
 }
 
 mat-card-title {
@@ -55,6 +54,16 @@ i {
 
 ul {
   list-style-type: none;
+}
+
+.product {
+  padding-top: 1em;
+}
+
+.total {
+  text-align: center;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 

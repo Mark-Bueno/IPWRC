@@ -6,10 +6,10 @@
       <mat-card (click)="goToProductInformation(product)">
         <mat-card-title>{{product.name}}</mat-card-title>
         <mat-card-content>
-          <img id="product" src="..//assets/images/{{product.imagePath}}" alt="Image not found." width="120px" height="120px"
+          <img id="product" src="{{product.imagePath}}" alt="Image not found." width="120px" height="120px"
                style="border-radius: 10px;">
         </mat-card-content>
-        <mat-card-footer>{{product.price}}</mat-card-footer>
+        <mat-card-footer>€{{product.price  | number : '1.2-2'}}</mat-card-footer>
       </mat-card>
     </li>
   </ul>
