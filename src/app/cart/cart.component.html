@@ -7,12 +7,13 @@
       </mat-card-header>
       <mat-card-content>
         <ul>
-          <li class="product" *ngFor="let product of cartProducts?.getCartProducts()">
-            <img src="{{product.imagePath}}" alt="Image not found." width="100px" height="100px"
+          <li class="product" *ngFor="let cart of cartProducts">
+            {{cart?.amount}}x
+            <img src="{{cart?.product?.imagePath}}" alt="Image not found." width="50px" height="50px"
                  style="border-radius: 10px;">
-            {{product?.name}} : {{product?.price | number : '1.2-2'}}
+            {{cart?.product?.name}} : €{{cart?.product?.price | number : '1.2-2'}}
           </li>
-          <li class="total"><b>Total price:</b> {{calculateTotalPrice() | number : '1.2-2'}}</li>
+          <li class="total"><b>Total price:</b> €{{totalPrice | number : '1.2-2'}}</li>
         </ul>
       </mat-card-content>
       <mat-card-footer>

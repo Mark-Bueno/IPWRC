@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CartProducts} from '../shared/cart-products';
 import {CartService} from '../services/cart.service';
+import {Cart} from '../models/cart.model';
 
 @Component({
   selector: 'app-cart',
@@ -8,20 +8,28 @@ import {CartService} from '../services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  cartProducts = [];
+  totalPrice = 0.00;
 
-  constructor(private cartProducts: CartProducts, private cartService: CartService) {
+  constructor(private cartService: CartService) {
   }
 
   ngOnInit() {
-    console.log(this.cartProducts.getCartProducts());
+    this.cartService.getCartByUser(1).subscribe(
+      (carts: Cart[]) => {
+        this.cartProducts = carts;
+        console.log(carts);
+        this.totalPrice = this.calculateTotalPrice();
+      }
+    );
   }
 
   calculateTotalPrice() {
-    const cartProducts = this.cartProducts.getCartProducts();
+    const cartProducts = this.cartProducts;
     let totalPrice = 0;
     let i;
     for (i = 0; i < cartProducts.length; i++) {
-      totalPrice = totalPrice + cartProducts[i].price;
+      totalPrice = totalPrice + cartProducts[i].product.price;
     }
     return totalPrice;
 
@@ -29,12 +37,9 @@ export class CartComponent implements OnInit {
   }
 
   clearCart() {
-    this.cartProducts.clearCartProducts();
+    this.cartProducts = [];
   }
 
   buyProducts() {
-    console.log(this.cartProducts.getCartProducts());
-    console.log('Thank you for shopping with us');
-    this.cartProducts.clearCartProducts();
   }
 }

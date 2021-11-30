@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Product} from '../models/product.model';
 import {Observable} from 'rxjs';
 import {Cart} from '../models/cart.model';
 
@@ -17,7 +16,15 @@ export class CartService {
   cart: Cart;
 
   getCartByUser(userId: number): Observable<Cart[]> {
-    return this.http.get<Cart[]>(this.baseUrl + '/' + userId);
+    return this.http.get<Cart[]>(this.baseUrl + '/users/' + userId);
+  }
+
+  addProductInCart(userId: number, productId: number): Observable<Cart> {
+    console.log(this.baseUrl + '/users/' + userId + '/products/' + productId);
+    return this.http.post<Cart>(this.baseUrl + '/users/' + userId + '/products/' + productId, JSON.stringify({
+      userId,
+      productId
+    }));
   }
 
 }
