@@ -1,27 +1,52 @@
 <app-header></app-header>
-<div class="loginCard">
+<div class="cartCard">
   <mat-card class="mat-card" style="background-color: white; border-radius: 20px">
     <div class="loginContainer">
       <mat-card-header>
-        <mat-card-title><h3>Shopping Cart</h3></mat-card-title>
+        <mat-card-title><i class="fa fa-shopping-cart fa-2x"></i>
+          <h3>Kart</h3></mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <ul>
-          <li class="product" *ngFor="let cart of cartProducts">
-            {{cart?.amount}}x
-            <img src="{{cart?.product?.imagePath}}" alt="Image not found." width="50px" height="50px"
-                 style="border-radius: 10px;">
-            {{cart?.product?.name}} : €{{cart?.product?.price | number : '1.2-2'}}
-          </li>
-          <li class="total"><b>Total price:</b> €{{totalPrice | number : '1.2-2'}}</li>
-        </ul>
+        <table *ngIf="cartProducts.length > 0; else emptyCart">
+          <tr class="product" *ngFor="let cart of cartProducts">
+            <td class="amountColumn">
+              {{cart?.amount}}x
+            </td>
+            <td class="imageColumn">
+              <img src="{{cart?.product?.imagePath}}" alt="Image not found." width="50px" height="50px"
+                   style="border-radius: 10px;">
+            </td>
+            <td class="itemColumn">
+              {{cart?.product?.name}}
+            </td>
+            <td class="priceColumn">
+              €{{cart?.product?.price | number : '1.2-2'}}
+            </td>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="priceColumn"><b>Totaal:</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="priceColumn"> €{{totalPrice | number : '1.2-2'}}</td>
+          </tr>
+        </table>
+        <ng-template #emptyCart>
+          <div class="empty-cart">
+            <span>Cart is empty</span>
+          </div>
+        </ng-template>
       </mat-card-content>
       <mat-card-footer>
-        <button class="btn" (click)="buyProducts()">
-          <i class="fa fa-money"></i>Buy Now
+        <button id="buyBtn" class="btn" (click)="buyProducts()" [disabled]="cartProducts.length === 0">
+          <i class="fa fa-money"></i>Koop Nu!
         </button>
-        <button class="btn" (click)="clearCart()">
-          <i class="fa fa-shopping-cart"></i>Clear Cart
+        <button id="clearBtn" class="btn" (click)="clearCart()" [disabled]="cartProducts.length === 0">
+          <i class="fa fa-trash"></i>Leeg Kart
         </button>
       </mat-card-footer>
     </div>

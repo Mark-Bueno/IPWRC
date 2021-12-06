@@ -10,18 +10,13 @@ import {Cart} from '../models/cart.model';
 export class CartComponent implements OnInit {
   cartProducts = [];
   totalPrice = 0.00;
+  userId = 1;
 
   constructor(private cartService: CartService) {
   }
 
   ngOnInit() {
-    this.cartService.getCartByUser(1).subscribe(
-      (carts: Cart[]) => {
-        this.cartProducts = carts;
-        console.log(carts);
-        this.totalPrice = this.calculateTotalPrice();
-      }
-    );
+    this.getCartProducts();
   }
 
   calculateTotalPrice() {
@@ -29,15 +24,26 @@ export class CartComponent implements OnInit {
     let totalPrice = 0;
     let i;
     for (i = 0; i < cartProducts.length; i++) {
-      totalPrice = totalPrice + cartProducts[i].product.price;
+      totalPrice = totalPrice + cartProducts[i].product.price * cartProducts[i].amount;
     }
     return totalPrice;
 
 
   }
 
+  getCartProducts() {
+    this.cartService.getCartByUser(this.userId).subscribe(
+      (carts: Cart[]) => {
+        this.cartProducts = carts;
+        this.totalPrice = this.calculateTotalPrice();
+      }
+    );
+  }
+
   clearCart() {
-    this.cartProducts = [];
+    this.cartService.clearProductsInCart(this.userId).subscribe(() => {
+      this.getCartProducts();
+    });
   }
 
   buyProducts() {

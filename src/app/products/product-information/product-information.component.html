@@ -4,18 +4,19 @@
     <div class="loginContainer">
       <mat-card-header>
         <mat-card-title><h3>{{product?.name}}</h3></mat-card-title>
-        <mat-card-subtitle>€{{product?.price | number : '1.2-2'}}</mat-card-subtitle>
+        <mat-card-subtitle>{{product?.description}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <img id="product" src="{{product?.imagePath}}" alt="Image not found." width="120px"
+        <img id="product" src="{{product?.imagePath}}" alt="Image not found." width="20%"
              height="120px"
              style="border-radius: 10px;">
-        <p>{{product?.description}}</p>
+        <p>€{{product?.price | number : '1.2-2'}}</p>
       </mat-card-content>
       <mat-card-footer>
         <button class="btn" (click)="addToCart()">
-          <i class="fa fa-shopping-cart"></i>Add to Cart
+          <i class="fa fa-shopping-cart"></i>Voeg toe!
         </button>
       </mat-card-footer>
     </div>
   </mat-card>
+</div>

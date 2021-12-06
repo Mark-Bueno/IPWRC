@@ -30,8 +30,9 @@ export class ProductInformationComponent implements OnInit {
   }
 
   addToCart() {
-    this.cartService.addProductInCart(1, this.productId);
-    this.goToCard();
+    this.cartService.addProductInCart(1, this.productId).subscribe(() => {
+      this.goToCard();
+    });
   }
 
   goToCard() {

@@ -9,18 +9,24 @@ mat-card-header {
   justify-content: center;
 }
 
-.loginCard {
-  position: relative;
+.cartCard {
+  padding-top: 2em;
+  position: static;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 87%;
+  min-height: 87%;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-p{
-  padding: 1em 0 0 0 ;
+h3 {
+  color: rgb(37, 150, 190);
+  font-weight: normal;
+}
+
+p {
+  padding: 1em 0 0 0;
 }
 
 mat-card {
@@ -29,6 +35,9 @@ mat-card {
 mat-card-title {
   font-weight: normal;
   font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 mat-card-footer {
@@ -38,8 +47,14 @@ mat-card-footer {
   margin: 0 auto;
 }
 
+mat-card-content {
+  padding: 2em;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
 button {
-  background-color: black;
   color: white;
   width: 9em;
 }
@@ -50,13 +65,7 @@ button:hover {
 
 i {
   padding-right: 0.5em;
-}
-
-ul {
-  list-style-type: none;
-}
-
-.product {
+}  .product {
   padding-top: 1em;
 }
 
@@ -66,4 +75,52 @@ ul {
   padding-bottom: 2em;
 }
 
+span {
+  display: table;
+  margin: 0 auto;
+}
 
+.empty-cart {
+  padding-bottom: 1em;
+}
+
+#buyBtn {
+  background-color: dodgerblue;
+}
+
+#clearBtn {
+  background-color: deeppink;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+  border: 3px dashed lightgrey;
+  border-radius: 0;
+}
+
+.fa-shopping-cart {
+  color: rgb(37, 150, 190);
+  padding: 0 0.25em 0 0;
+}
+
+table {
+  table-layout: fixed;
+  width: 75%;
+}
+
+.amountColumn {
+  width: 10%;
+}
+
+.imageColumn {
+  width: 20%;
+}
+
+.itemColumn {
+  width: 50%;
+}
+
+.priceColumn {
+  width: 20%;
+  text-align: right;
+}
