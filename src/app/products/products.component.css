@@ -5,11 +5,12 @@ div {
 h2 {
   padding-top: 1em;
   font-weight: normal;
+  color: rgb(37, 150, 190);
 }
 
 ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-column-gap: 0em;
   grid-row-gap: 2em;
   list-style: none;
@@ -20,6 +21,7 @@ ul {
 mat-card {
   text-align: center;
   cursor: pointer;
+  width: 100%;
 }
 
 mat-card-title {
@@ -27,7 +29,7 @@ mat-card-title {
   font-size: 18px;
 }
 
-mat-card-footer{
+mat-card-footer {
   padding-bottom: 1em;
 }
 
@@ -35,8 +37,11 @@ mat-card-footer{
   box-shadow: none;
   border: 1px dashed lightgrey;
   border-radius: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mat-card:not([class*=mat-elevation-z]):hover {
-  color: blue;
+  color: rgb(37, 150, 190);
 }
