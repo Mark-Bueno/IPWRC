@@ -5,7 +5,6 @@ import {HomeComponent} from '../home/home.component';
 import {ProductsComponent} from '../products/products.component';
 import {ProductInformationComponent} from '../products/product-information/product-information.component';
 import {CartComponent} from '../cart/cart.component';
-import {AppComponent} from '../app.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {SharedModule} from '../shared/shared.module';
 import {MatCardModule} from '@angular/material';
