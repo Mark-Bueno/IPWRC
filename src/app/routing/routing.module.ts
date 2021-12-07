@@ -8,23 +8,25 @@ import {CartComponent} from '../cart/cart.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {SharedModule} from '../shared/shared.module';
 import {MatCardModule} from '@angular/material';
+import {AuthenticationGuard} from './authentication-guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'products', component: ProductsComponent},
-  {path: 'products/:id', component: ProductInformationComponent},
-  {path: 'cart', component: CartComponent},
-  {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'},
+  {path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard]},
+  {path: 'products', component: ProductsComponent, canActivate: [AuthenticationGuard]},
+  {path: 'products/:id', component: ProductInformationComponent, canActivate: [AuthenticationGuard]},
+  {path: 'cart', component: CartComponent, canActivate: [AuthenticationGuard]},
+  {path: '404', component: NotFoundComponent, canActivate: [AuthenticationGuard]},
+  // {path: '**', redirectTo: '/404', canActivate: [AuthenticationGuard]},
 ];
 
 @NgModule({
   declarations: [
     NotFoundComponent],
   imports: [RouterModule.forRoot(routes), SharedModule, MatCardModule],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthenticationGuard]
 })
 export class RoutingModule {
 }

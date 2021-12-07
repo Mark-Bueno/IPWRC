@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GlobalVariables} from '../global-variables';
+import {TokenService} from "../../services/token.service";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import {GlobalVariables} from '../global-variables';
 export class HeaderComponent implements OnInit {
 
 
-  constructor(private globalVariables: GlobalVariables) {
+  constructor(private globalVariables: GlobalVariables, private tokenService: TokenService) {
   }
 
   ngOnInit() {
@@ -31,5 +32,9 @@ export class HeaderComponent implements OnInit {
         button.style.display = 'default';
       });
     }
+  }
+
+  logout() {
+    this.tokenService.removeToken();
   }
 }
