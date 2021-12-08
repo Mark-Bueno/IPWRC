@@ -4,6 +4,7 @@ import {ProductService} from '../../services/product.service';
 import {Product} from '../../models/product.model';
 import {CartService} from '../../services/cart.service';
 import {GlobalVariables} from '../../shared/global-variables';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-product-information',
@@ -13,12 +14,15 @@ import {GlobalVariables} from '../../shared/global-variables';
 export class ProductInformationComponent implements OnInit {
   public product;
   public productId;
+  public userId;
 
   constructor(private router: Router, private productService: ProductService,
-              private route: ActivatedRoute, private cartService: CartService, private globalVariables: GlobalVariables) {
+              private route: ActivatedRoute, private cartService: CartService, private globalVariables: GlobalVariables,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.userId = Number(this.authService.retrieveUserId());
     this.globalVariables.setPage('productInformation');
     this.route.params.subscribe(params => {
       this.productId = params.id;
@@ -26,12 +30,14 @@ export class ProductInformationComponent implements OnInit {
         .subscribe(
           (product: Product) => {
             this.product = product;
+          }, () => {
+            this.router.navigate(['/404']);
           });
     });
   }
 
   addToCart() {
-    this.cartService.addProductInCart(1, this.productId).subscribe(() => {
+    this.cartService.addProductInCart(this.userId, this.productId).subscribe(() => {
       this.goToCard();
     });
   }

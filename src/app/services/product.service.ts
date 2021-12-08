@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Product} from '../models/product.model';
 import {HttpClient} from '@angular/common/http';
-import {TokenService} from './token.service';
+import {AuthService} from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +11,16 @@ export class ProductService {
 
   private baseUrl = 'http://localhost:8080/api/products';
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {
+  constructor(private http: HttpClient, private authService: AuthService) {
   }
 
   product: Product;
 
   getAll(): Observable<Product[]> {
-    console.log(this.tokenService.getAuthorizationHeader());
-    return this.http.get<Product[]>(this.baseUrl, this.tokenService.getAuthorizationHeader());
+    return this.http.get<Product[]>(this.baseUrl, this.authService.getAuthorizationHeader());
   }
 
   getProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(this.baseUrl + '/' + id, this.tokenService.getAuthorizationHeader());
+    return this.http.get<Product>(this.baseUrl + '/' + id, this.authService.getAuthorizationHeader());
   }
 }

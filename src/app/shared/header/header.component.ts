@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GlobalVariables} from '../global-variables';
-import {TokenService} from "../../services/token.service";
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +9,13 @@ import {TokenService} from "../../services/token.service";
 })
 export class HeaderComponent implements OnInit {
 
+  username: string;
 
-  constructor(private globalVariables: GlobalVariables, private tokenService: TokenService) {
+  constructor(private globalVariables: GlobalVariables, private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.username = this.authService.retrieveUsername();
     this.setHeaderStylingByPage();
   }
 
@@ -35,6 +37,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.tokenService.removeToken();
+    this.authService.clearLocalStorage();
   }
 }

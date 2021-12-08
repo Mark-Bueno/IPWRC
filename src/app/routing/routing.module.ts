@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'products/:id', component: ProductInformationComponent, canActivate: [AuthenticationGuard]},
   {path: 'cart', component: CartComponent, canActivate: [AuthenticationGuard]},
   {path: '404', component: NotFoundComponent, canActivate: [AuthenticationGuard]},
-  // {path: '**', redirectTo: '/404', canActivate: [AuthenticationGuard]},
+  {path: '**', redirectTo: '/404', canActivate: [AuthenticationGuard]},
 ];
 
 @NgModule({

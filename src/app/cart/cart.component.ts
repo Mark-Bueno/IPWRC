@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {Cart} from '../models/cart.model';
+import {GlobalVariables} from '../shared/global-variables';
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-cart',
@@ -10,12 +12,15 @@ import {Cart} from '../models/cart.model';
 export class CartComponent implements OnInit {
   cartProducts = [];
   totalPrice = 0.00;
-  userId = 1;
+  userId = 0;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private globalVariables: GlobalVariables, private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.globalVariables.setPage('cart');
+    this.userId = Number(this.authService.retrieveUserId());
+    console.log(this.userId);
     this.getCartProducts();
   }
 
