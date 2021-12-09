@@ -5,6 +5,7 @@ import {SharedModule} from '../shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule, MatInputModule} from '@angular/material';
 import { SignupComponent } from './signup/signup.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SignupComponent } from './signup/signup.component';
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
+    RouterModule,
   ], exports: [LoginComponent]
 })
 export class LoginModule {

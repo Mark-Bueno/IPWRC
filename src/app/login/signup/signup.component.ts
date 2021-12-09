@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {UserService} from '../../services/user.service';
+import {Router} from '@angular/router';
+import {GlobalVariables} from '../../shared/global-variables';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -6,10 +11,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  loginForm: FormGroup;
+  nameTaken = true;
+  passwordMatch = true;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private userService: UserService, private router: Router, private globalVariables: GlobalVariables,
+              private authService: AuthService) {
   }
 
+  ngOnInit() {
+    this.globalVariables.setPage('login');
+    this.loginForm = new FormGroup({
+      loginUsername: new FormControl(),
+      loginPassword: new FormControl(),
+      loginRepeatPassword: new FormControl()
+    });
+  }
+
+  signup() {
+    const username = this.loginForm.controls.loginUsername.value;
+    const password = this.loginForm.controls.loginPassword.value;
+    const repeatPassword = this.loginForm.controls.loginRepeatPassword.value;
+    if (password === repeatPassword) {
+      this.userService.signup(username, password).subscribe(async () => {
+        }, () => {
+          console.log('lol');
+        }
+      );
+    }
+  }
 }
