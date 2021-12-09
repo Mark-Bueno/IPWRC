@@ -77,3 +77,6 @@ img {
   padding: 0.25em;
 }
 
+mat-card-footer {
+  text-align: center;
+}
