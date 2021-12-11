@@ -54,11 +54,15 @@ export class CartComponent implements OnInit {
   buyProducts() {
   }
 
-  addProduct() {
-
+  addProduct(productId: number) {
+    this.cartService.addProductInCart(this.userId, productId).subscribe(() => {
+      this.getCartProducts();
+    });
   }
 
-  removeProduct() {
-
+  removeProduct(productId: number) {
+    this.cartService.deleteProductInCart(this.userId, productId).subscribe(() => {
+      this.getCartProducts();
+    });
   }
 }

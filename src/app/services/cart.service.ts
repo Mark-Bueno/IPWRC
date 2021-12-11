@@ -29,4 +29,8 @@ export class CartService {
     return this.http.delete<Cart>(this.baseUrl + '/users/' + userId, this.authService.getAuthorizationHeader());
   }
 
+  deleteProductInCart(userId: number, productId): Observable<Cart> {
+    return this.http.delete<Cart>(this.baseUrl + '/users/' + userId + '/products/' + productId, this.authService.getAuthorizationHeader());
+  }
+
 }

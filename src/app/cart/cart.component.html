@@ -22,8 +22,8 @@
             <td class="priceColumn">
               €{{cart?.product?.price | number : '1.2-2'}}
             </td>
-            <td (click)="addProduct()" class="add"><i class="fa fa-plus-circle"></i></td>
-            <td (click)="removeProduct()"class="remove"><i class="fa fa-minus-circle"></i></td>
+            <td (click)="addProduct(cart?.product?.id)" class="add"><i class="fa fa-plus-circle"></i></td>
+            <td (click)="removeProduct(cart?.product?.id)" class="remove"><i class="fa fa-minus-circle"></i></td>
           <tr>
             <td></td>
             <td></td>
