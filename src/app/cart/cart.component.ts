@@ -38,8 +38,9 @@ export class CartComponent implements OnInit {
 
   getCartProducts() {
     this.cartService.getCartByUser(this.userId).subscribe(
-      (carts: Cart[]) => {
-        this.cartProducts = carts;
+      (carts: any[]) => {
+        this.cartProducts = carts.sort((a, b) => (
+          a.product.name > b.product.name) ? 1 : ((b.product.name > a.product.name) ? -1 : 0));
         this.totalPrice = this.calculateTotalPrice();
       }
     );
