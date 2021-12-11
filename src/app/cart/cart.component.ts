@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {Cart} from '../models/cart.model';
 import {GlobalVariables} from '../shared/global-variables';
-import {AuthService} from "../services/auth.service";
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -52,5 +52,13 @@ export class CartComponent implements OnInit {
   }
 
   buyProducts() {
+  }
+
+  addProduct() {
+
+  }
+
+  removeProduct() {
+
   }
 }

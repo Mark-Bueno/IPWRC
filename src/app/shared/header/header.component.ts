@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     const buttons = document.getElementsByTagName('button');
     if (this.globalVariables.getPage() === 'login') {
       Array.from(buttons).forEach((button) => {
-        if (button !== document.getElementById('submit')) {
+        if (button !== document.getElementById('submit') && button !== document.getElementById('cancel')) {
           button.disabled = true;
           button.style.display = 'none';
         }

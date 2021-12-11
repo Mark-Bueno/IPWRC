@@ -65,7 +65,9 @@ button:hover {
 
 i {
   padding-right: 0.5em;
-}  .product {
+}
+
+.product {
   padding-top: 1em;
 }
 
@@ -105,7 +107,7 @@ span {
 
 table {
   table-layout: fixed;
-  width: 75%;
+  width: 85%;
 }
 
 .amountColumn {
@@ -117,10 +119,32 @@ table {
 }
 
 .itemColumn {
-  width: 50%;
+  width: 40%;
 }
 
 .priceColumn {
-  width: 20%;
+  width: 15%;
   text-align: right;
+}
+
+.add {
+  width: 7.5%;
+  text-align: right;
+  color: green;
+}
+
+.add:hover {
+  color: greenyellow;
+  cursor: pointer;
+}
+
+.remove {
+  width: 7.5%;
+  text-alignt: right;
+  color: rgb(175, 0, 0);
+}
+
+.remove:hover {
+  color: rgb(255, 0, 0);
+  cursor: pointer;
 }

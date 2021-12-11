@@ -43,11 +43,6 @@ export class AuthService {
     localStorage.removeItem(this.token);
   }
 
-  public removeUser() {
-    localStorage.removeItem(this.userId);
-    localStorage.removeItem(this.username);
-  }
-
   getAuthorizationHeader() {
     const requestOptions = {
       headers: new HttpHeaders({

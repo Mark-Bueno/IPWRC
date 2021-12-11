@@ -9,10 +9,12 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {SharedModule} from '../shared/shared.module';
 import {MatCardModule} from '@angular/material';
 import {AuthenticationGuard} from './authentication-guard';
+import {SignupComponent} from '../login/signup/signup.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard]},
   {path: 'products', component: ProductsComponent, canActivate: [AuthenticationGuard]},
   {path: 'products/:id', component: ProductInformationComponent, canActivate: [AuthenticationGuard]},

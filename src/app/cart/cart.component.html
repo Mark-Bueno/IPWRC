@@ -22,17 +22,23 @@
             <td class="priceColumn">
               €{{cart?.product?.price | number : '1.2-2'}}
             </td>
+            <td (click)="addProduct()" class="add"><i class="fa fa-plus-circle"></i></td>
+            <td (click)="removeProduct()"class="remove"><i class="fa fa-minus-circle"></i></td>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td class="priceColumn"><b>Totaal:</b></td>
+            <td class="add"></td>
+            <td class="remove"></td>
           </tr>
           <tr>
             <td></td>
             <td></td>
             <td></td>
             <td class="priceColumn"> €{{totalPrice | number : '1.2-2'}}</td>
+            <td class="add"></td>
+            <td class="remove"></td>
           </tr>
         </table>
         <ng-template #emptyCart>

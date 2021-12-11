@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {User} from '../models/user.model';
 
@@ -20,6 +20,21 @@ export class UserService {
       password,
     });
     return this.http.post<any>(this.baseUrl + '/login', body, {observe: 'response'});
+  }
+
+  signup(username: string, password: string): Observable<User> {
+    const body = JSON.stringify({
+      id: 0,
+      username,
+      password,
+      role: 'default'
+    });
+    const requestOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post<User>(this.baseUrl, body, requestOptions);
   }
 
   getUserByUsername(username: string): Observable<User> {
