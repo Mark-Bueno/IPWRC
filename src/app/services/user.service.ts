@@ -37,7 +37,7 @@ export class UserService {
     return this.http.post<User>(this.baseUrl, body, requestOptions);
   }
 
-  getUserByUsername(username: string): Observable<User> {
-    return this.http.get<User>(this.baseUrl + '/' + username, this.authService.getAuthorizationHeader());
+  getAuthenticatedUser(): Observable<User> {
+    return this.http.get<User>(this.baseUrl + '/authenticated', this.authService.getAuthorizationHeader());
   }
 }

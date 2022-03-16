@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(username, password).subscribe(async (response) => {
         const token = response.headers.get('Authorization');
         this.authService.storeToken(token);
-        this.userService.getUserByUsername(username).subscribe(async (user) => {
+        this.userService.getAuthenticatedUser().subscribe(async (user) => {
           this.authService.storeUser(user.id.toString(), user.username);
           await this.router.navigate(['/home']).then(() => {
           });

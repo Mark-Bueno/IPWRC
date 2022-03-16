@@ -17,20 +17,20 @@ export class CartService {
   cart: Cart;
 
   getCartByUser(userId: number): Observable<Cart[]> {
-    return this.http.get<Cart[]>(this.baseUrl + '/users/' + userId, this.authService.getAuthorizationHeader());
+    return this.http.get<Cart[]>(this.baseUrl + '/' + userId, this.authService.getAuthorizationHeader());
   }
 
   addProductInCart(userId: number, productId: number): Observable<Cart> {
-    return this.http.post<Cart>(this.baseUrl + '/users/' + userId + '/products/' + productId, {},
+    return this.http.post<Cart>(this.baseUrl + '/' + userId + '/' + productId, {},
       this.authService.getAuthorizationHeader());
   }
 
   clearProductsInCart(userId: number): Observable<Cart> {
-    return this.http.delete<Cart>(this.baseUrl + '/users/' + userId, this.authService.getAuthorizationHeader());
+    return this.http.delete<Cart>(this.baseUrl + '/' + userId, this.authService.getAuthorizationHeader());
   }
 
   deleteProductInCart(userId: number, productId): Observable<Cart> {
-    return this.http.delete<Cart>(this.baseUrl + '/users/' + userId + '/products/' + productId, this.authService.getAuthorizationHeader());
+    return this.http.delete<Cart>(this.baseUrl + '/' + userId + '/' + productId, this.authService.getAuthorizationHeader());
   }
 
 }
