@@ -12,15 +12,12 @@ import {AuthService} from '../services/auth.service';
 export class CartComponent implements OnInit {
   cartProducts = [];
   totalPrice = 0.00;
-  userId = 0;
 
-  constructor(private cartService: CartService, private globalVariables: GlobalVariables, private authService: AuthService) {
+  constructor(private cartService: CartService, private globalVariables: GlobalVariables) {
   }
 
   ngOnInit() {
     this.globalVariables.setPage('cart');
-    this.userId = Number(this.authService.retrieveUserId());
-    console.log(this.userId);
     this.getCartProducts();
   }
 
@@ -37,7 +34,7 @@ export class CartComponent implements OnInit {
   }
 
   getCartProducts() {
-    this.cartService.getCartByUser(this.userId).subscribe(
+    this.cartService.getCartByUser().subscribe(
       (carts: any[]) => {
         this.cartProducts = carts.sort((a, b) => (
           a.product.name > b.product.name) ? 1 : ((b.product.name > a.product.name) ? -1 : 0));
@@ -47,7 +44,7 @@ export class CartComponent implements OnInit {
   }
 
   clearCart() {
-    this.cartService.clearProductsInCart(this.userId).subscribe(() => {
+    this.cartService.clearProductsInCart().subscribe(() => {
       this.getCartProducts();
     });
   }
@@ -56,13 +53,13 @@ export class CartComponent implements OnInit {
   }
 
   addProduct(productId: number) {
-    this.cartService.addProductInCart(this.userId, productId).subscribe(() => {
+    this.cartService.addProductInCart(productId).subscribe(() => {
       this.getCartProducts();
     });
   }
 
   removeProduct(productId: number) {
-    this.cartService.deleteProductInCart(this.userId, productId).subscribe(() => {
+    this.cartService.deleteProductInCart(productId).subscribe(() => {
       this.getCartProducts();
     });
   }

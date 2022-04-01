@@ -16,21 +16,21 @@ export class CartService {
 
   cart: Cart;
 
-  getCartByUser(userId: number): Observable<Cart[]> {
-    return this.http.get<Cart[]>(this.baseUrl + '/' + userId, this.authService.getAuthorizationHeader());
+  getCartByUser(): Observable<Cart[]> {
+    return this.http.get<Cart[]>(this.baseUrl, this.authService.getAuthorizationHeader());
   }
 
-  addProductInCart(userId: number, productId: number): Observable<Cart> {
-    return this.http.post<Cart>(this.baseUrl + '/' + userId + '/' + productId, {},
+  addProductInCart(productId: number): Observable<Cart> {
+    return this.http.post<Cart>(this.baseUrl + '/' + productId, {},
       this.authService.getAuthorizationHeader());
   }
 
-  clearProductsInCart(userId: number): Observable<Cart> {
-    return this.http.delete<Cart>(this.baseUrl + '/' + userId, this.authService.getAuthorizationHeader());
+  clearProductsInCart(): Observable<Cart> {
+    return this.http.delete<Cart>(this.baseUrl, this.authService.getAuthorizationHeader());
   }
 
-  deleteProductInCart(userId: number, productId): Observable<Cart> {
-    return this.http.delete<Cart>(this.baseUrl + '/' + userId + '/' + productId, this.authService.getAuthorizationHeader());
+  deleteProductInCart(productId): Observable<Cart> {
+    return this.http.delete<Cart>(this.baseUrl + '/' + productId, this.authService.getAuthorizationHeader());
   }
 
 }
