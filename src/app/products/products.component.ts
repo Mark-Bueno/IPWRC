@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {ProductService} from '../services/product.service';
 import {CartService} from '../services/cart.service';
 import {GlobalVariables} from '../shared/global-variables';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-products',
@@ -12,11 +13,18 @@ import {GlobalVariables} from '../shared/global-variables';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
+  role = '';
+  isAdmin = false;
 
-  constructor(private router: Router, private productService: ProductService, cartService: CartService, private globals: GlobalVariables) {
+  constructor(private router: Router, private productService: ProductService, cartService: CartService, private globals: GlobalVariables,
+              private userService: UserService) {
   }
 
   ngOnInit() {
+    this.userService.getAuthenticatedUser().subscribe(async (user) => {
+      this.role = user.role;
+      this.checkIfAdmin();
+    });
     this.globals.setPage('products');
     this.productService.getAll()
       .subscribe((products: Product[]) => this.products = products.sort((a, b) => (
@@ -24,6 +32,16 @@ export class ProductsComponent implements OnInit {
   }
 
   goToProductInformation(product): void {
-    this.router.navigate(['/products/' + product.id], {state: {data: product}});
+    this.router.navigate(['/products/' + product.id], {state: {data: product}}).then();
+  }
+
+  goToProductAdd(): void {
+    this.router.navigate(['/admin/products/add']).then();
+  }
+
+  checkIfAdmin(): void {
+    if (this.role === 'admin') {
+      this.isAdmin = true;
+    }
   }
 }

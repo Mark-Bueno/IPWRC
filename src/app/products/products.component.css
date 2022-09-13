@@ -42,6 +42,11 @@ mat-card-footer {
   text-overflow: ellipsis;
 }
 
-.mat-card:not([class*=mat-elevation-z]):hover {
-  color: rgb(37, 150, 190);
+#edit{
+  cursor: pointer;
+}
+
+.fa-plus-circle{
+  color: green;
+  cursor: pointer;
 }

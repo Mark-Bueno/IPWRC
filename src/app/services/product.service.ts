@@ -23,4 +23,8 @@ export class ProductService {
   getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(this.baseUrl + '/' + id, this.authService.getAuthorizationHeader());
   }
+
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.baseUrl, product, this.authService.getAuthorizationHeader());
+  }
 }

@@ -10,6 +10,7 @@ import {ProductsModule} from './products/products.module';
 import {HttpClientModule} from '@angular/common/http';
 import {CartModule} from './cart/cart.module';
 import {HomeModule} from './home/home.module';
+import {AdminModule} from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {HomeModule} from './home/home.module';
     MatCardModule,
     ProductsModule,
     HttpClientModule,
+    AdminModule,
     CartModule,
     HomeModule
 

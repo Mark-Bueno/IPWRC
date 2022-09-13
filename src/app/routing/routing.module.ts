@@ -10,6 +10,7 @@ import {SharedModule} from '../shared/shared.module';
 import {MatCardModule} from '@angular/material';
 import {AuthenticationGuard} from './authentication-guard';
 import {SignupComponent} from '../login/signup/signup.component';
+import {ProductAddComponent} from '../admin/product-add/product-add.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -19,6 +20,12 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent, canActivate: [AuthenticationGuard]},
   {path: 'products/:id', component: ProductInformationComponent, canActivate: [AuthenticationGuard]},
   {path: 'cart', component: CartComponent, canActivate: [AuthenticationGuard]},
+  {
+    path: 'admin/products/add',
+    component: ProductAddComponent,
+    canActivate: [AuthenticationGuard],
+    data: {role: 'admin'}
+  },
   {path: '404', component: NotFoundComponent, canActivate: [AuthenticationGuard]},
   {path: '**', redirectTo: '/404', canActivate: [AuthenticationGuard]},
 ];

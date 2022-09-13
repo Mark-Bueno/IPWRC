@@ -14,15 +14,12 @@ import {AuthService} from '../../services/auth.service';
 export class ProductInformationComponent implements OnInit {
   public product;
   public productId;
-  public userId;
-
   constructor(private router: Router, private productService: ProductService,
               private route: ActivatedRoute, private cartService: CartService, private globalVariables: GlobalVariables,
               private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.userId = Number(this.authService.retrieveUserId());
     this.globalVariables.setPage('productInformation');
     this.route.params.subscribe(params => {
       this.productId = params.id;

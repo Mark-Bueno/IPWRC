@@ -1,6 +1,10 @@
 <app-header></app-header>
 <div>
   <h2>Producten</h2>
+  <div [hidden]="!isAdmin">
+    <br>
+    Toevoegen <i class="fa fa-plus-circle" (click)="goToProductAdd()"></i>
+  </div>
   <ul>
     <li *ngFor="let product of products">
       <mat-card (click)="goToProductInformation(product)">
@@ -11,6 +15,8 @@
         </mat-card-content>
         <mat-card-footer>€{{product.price  | number : '1.2-2'}}</mat-card-footer>
       </mat-card>
+      <mat-card-footer [hidden]="!isAdmin">
+        <br><i id="edit" class="fa fa-edit"></i></mat-card-footer>
     </li>
   </ul>
 </div>
