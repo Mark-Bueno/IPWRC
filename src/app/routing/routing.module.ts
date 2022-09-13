@@ -11,6 +11,7 @@ import {MatCardModule} from '@angular/material';
 import {AuthenticationGuard} from './authentication-guard';
 import {SignupComponent} from '../login/signup/signup.component';
 import {ProductAddComponent} from '../admin/product-add/product-add.component';
+import {ProductEditComponent} from "../admin/product-edit/product-edit.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -23,6 +24,12 @@ const routes: Routes = [
   {
     path: 'admin/products/add',
     component: ProductAddComponent,
+    canActivate: [AuthenticationGuard],
+    data: {role: 'admin'}
+  },
+  {
+    path: 'admin/products/:id',
+    component: ProductEditComponent,
     canActivate: [AuthenticationGuard],
     data: {role: 'admin'}
   },

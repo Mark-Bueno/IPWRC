@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GlobalVariables} from '../global-variables';
 import {AuthService} from '../../services/auth.service';
-import {UserService} from "../../services/user.service";
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -16,9 +16,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getAuthenticatedUser().subscribe(async (user) => {
-      this.username = user.username;
-    });
+    if ((this.globalVariables.getPage() !== 'login')) {
+      this.userService.getAuthenticatedUser().subscribe(async (user) => {
+        this.username = user.username;
+      });
+    }
     this.setHeaderStylingByPage();
   }
 

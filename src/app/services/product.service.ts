@@ -27,4 +27,12 @@ export class ProductService {
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.baseUrl, product, this.authService.getAuthorizationHeader());
   }
+
+  deleteProduct(id: number): Observable<Product> {
+    return this.http.delete<Product>(this.baseUrl + '/' + id, this.authService.getAuthorizationHeader());
+  }
+
+  editProduct(product: Product) {
+    return this.http.put<Product>(this.baseUrl, product, this.authService.getAuthorizationHeader());
+  }
 }

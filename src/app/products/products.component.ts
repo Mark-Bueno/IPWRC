@@ -44,4 +44,9 @@ export class ProductsComponent implements OnInit {
       this.isAdmin = true;
     }
   }
+
+  goToProductEdit(product): void {
+    this.router.navigate(['/admin/products/' + product.id], {state: {data: product}}).then();
+  }
+
 }

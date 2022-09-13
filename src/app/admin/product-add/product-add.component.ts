@@ -28,7 +28,6 @@ export class ProductAddComponent implements OnInit {
   }
 
   addProduct() {
-    console.log('click');
     const name = this.productForm.controls.productName.value;
     const price = this.productForm.controls.productPrice.value;
     const photo = this.productForm.controls.productPhoto.value;

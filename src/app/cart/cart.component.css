@@ -1,5 +1,5 @@
 mat-card {
-  width: 500px;
+  width: 700px;
   border-style: solid;
   border-color: #394365;
 }
@@ -119,11 +119,11 @@ table {
 }
 
 .itemColumn {
-  width: 40%;
+  width: 35%;
 }
 
 .priceColumn {
-  width: 15%;
+  width: 20%;
   text-align: right;
 }
 
