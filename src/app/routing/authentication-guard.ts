@@ -22,6 +22,8 @@ export class AuthenticationGuard implements CanActivate {
           this.router.navigate(['/404']).then();
           return false;
         }
+      }, () => {
+        this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}}).then();
       });
       return true;
     }

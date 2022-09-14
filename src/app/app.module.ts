@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {CartModule} from './cart/cart.module';
 import {HomeModule} from './home/home.module';
 import {AdminModule} from './admin/admin.module';
+import {OrderModule} from './order/order.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {AdminModule} from './admin/admin.module';
     HttpClientModule,
     AdminModule,
     CartModule,
-    HomeModule
+    HomeModule,
+    OrderModule
 
   ],
   providers: [],

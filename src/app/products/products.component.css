@@ -35,7 +35,6 @@ mat-card-footer {
 
 .mat-card:not([class*=mat-elevation-z]) {
   box-shadow: none;
-  border: 1px dashed lightgrey;
   border-radius: 0;
   white-space: nowrap;
   overflow: hidden;

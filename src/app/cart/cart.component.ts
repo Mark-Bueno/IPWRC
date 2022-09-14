@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
-import {Cart} from '../models/cart.model';
 import {GlobalVariables} from '../shared/global-variables';
-import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,9 +10,9 @@ import {AuthService} from '../services/auth.service';
 })
 export class CartComponent implements OnInit {
   cartProducts = [];
-  totalPrice = 0.00;
+  totalPrice = 0;
 
-  constructor(private cartService: CartService, private globalVariables: GlobalVariables) {
+  constructor(private cartService: CartService, private globalVariables: GlobalVariables, private router: Router) {
   }
 
   ngOnInit() {
@@ -33,11 +32,16 @@ export class CartComponent implements OnInit {
 
   }
 
+  sortCartProducts(carts) {
+    carts.sort((a, b) => (
+      a.product.name > b.product.name) ? 1 : ((b.product.name > a.product.name) ? -1 : 0));
+    return carts;
+  }
+
   getCartProducts() {
     this.cartService.getCartByUser().subscribe(
       (carts: any[]) => {
-        this.cartProducts = carts.sort((a, b) => (
-          a.product.name > b.product.name) ? 1 : ((b.product.name > a.product.name) ? -1 : 0));
+        this.cartProducts = this.sortCartProducts(carts);
         this.totalPrice = this.calculateTotalPrice();
       }
     );
@@ -50,6 +54,7 @@ export class CartComponent implements OnInit {
   }
 
   buyProducts() {
+    this.router.navigate(['../order']).then();
   }
 
   addProduct(productId: number) {

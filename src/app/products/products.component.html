@@ -10,13 +10,13 @@
       <mat-card (click)="goToProductInformation(product)">
         <mat-card-title>{{product.name}}</mat-card-title>
         <mat-card-content>
-          <img id="product" src="{{product.imagePath}}" alt="Image not found." width="120px" height="120px"
+          <img id="product" src="{{product.imagePath}}" alt="Image not found." width="80px" height="80px"
                style="border-radius: 10px;">
         </mat-card-content>
         <mat-card-footer>€{{product.price  | number : '1.2-2'}}</mat-card-footer>
       </mat-card>
       <mat-card-footer [hidden]="!isAdmin">
-        <br><i id="edit" class="fa fa-edit" (click)="goToProductEdit(product)"></i></mat-card-footer>
+        <i id="edit" class="fa fa-edit" (click)="goToProductEdit(product)"></i></mat-card-footer>
     </li>
   </ul>
 </div>
