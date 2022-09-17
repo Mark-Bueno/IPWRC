@@ -28,6 +28,10 @@ export class ProductService {
     return this.http.post<Product>(this.baseUrl, product, this.authService.getAuthorizationHeader());
   }
 
+  copyProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.baseUrl + '/copy', product, this.authService.getAuthorizationHeader());
+  }
+
   deleteProduct(id: number): Observable<Product> {
     return this.http.delete<Product>(this.baseUrl + '/' + id, this.authService.getAuthorizationHeader());
   }

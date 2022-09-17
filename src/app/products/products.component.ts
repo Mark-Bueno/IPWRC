@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   role = '';
   isAdmin = false;
+  productsOnPage = 0;
 
   constructor(private router: Router, private productService: ProductService, cartService: CartService, private globals: GlobalVariables,
               private userService: UserService) {
@@ -26,9 +27,21 @@ export class ProductsComponent implements OnInit {
       this.checkIfAdmin();
     });
     this.globals.setPage('products');
+    this.getProducts();
+  }
+
+  sortProducts(products) {
+    products.sort((a, b) => (
+      a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    return products;
+  }
+
+  getProducts() {
     this.productService.getAll()
-      .subscribe((products: Product[]) => this.products = products.sort((a, b) => (
-        a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)));
+      .subscribe((products: Product[]) => {
+        this.products = this.sortProducts(products);
+        this.productsOnPage = products.length;
+      });
   }
 
   goToProductInformation(product): void {
@@ -49,4 +62,16 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['/admin/products/' + product.id], {state: {data: product}}).then();
   }
 
+  deleteProduct(product) {
+    this.productService.deleteProduct(product.id).subscribe(() => {
+        this.getProducts();
+      }
+    );
+  }
+
+  copyProduct(product) {
+    this.productService.copyProduct(product).subscribe(() => {
+      this.getProducts();
+    });
+  }
 }

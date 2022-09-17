@@ -1,22 +1,29 @@
 <app-header></app-header>
-<div>
+<div class="productContainer">
   <h2>Producten</h2>
-  <div [hidden]="!isAdmin">
-    <br>
-    Nieuwe Product <i class="fa fa-plus-circle" (click)="goToProductAdd()"></i>
+  <br>
+  <div id="subTitle">
+    <span style="font-size: 20px" [hidden]="!isAdmin">Product Toevoegen <i class="fa fa-plus-circle" (click)="goToProductAdd()"></i></span>
+    <span style="font-size: 20px">Producten gevonden: {{productsOnPage}}</span>
   </div>
   <ul>
     <li *ngFor="let product of products">
       <mat-card (click)="goToProductInformation(product)">
         <mat-card-title>{{product.name}}</mat-card-title>
         <mat-card-content>
-          <img id="product" src="{{product.imagePath}}" alt="Image not found." width="80px" height="80px"
+          <img id="product" src="{{product.imagePath}}" alt="Image not found." width="200px" height="200px"
                style="border-radius: 10px;">
         </mat-card-content>
-        <mat-card-footer>€{{product.price  | number : '1.2-2'}}</mat-card-footer>
+        <mat-card-footer>
+          €{{product.price  | number : '1.2-2'}}
+        </mat-card-footer>
       </mat-card>
-      <mat-card-footer [hidden]="!isAdmin">
-        <i id="edit" class="fa fa-edit" (click)="goToProductEdit(product)"></i></mat-card-footer>
+      <br>
+      <mat-card-footer id="admin-tools" [hidden]="!isAdmin">
+        <i id="edit" class="fa fa-edit fa-2x" (click)="goToProductEdit(product)"></i>
+        <i id="copy" class="fa fa-copy fa-2x" (click)="copyProduct(product)"></i>
+        <i id="remove" class="fa fa-remove fa-2x" (click)="deleteProduct(product)"></i>
+      </mat-card-footer>
     </li>
   </ul>
 </div>

@@ -5,11 +5,13 @@ import {SharedModule} from '../shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {RouterModule} from '@angular/router';
+import { OrderOverviewComponent } from './order-overview/order-overview.component';
 
 
 @NgModule({
   declarations: [
-    OrderComponent
+    OrderComponent,
+    OrderOverviewComponent
   ],
   imports: [
     CommonModule,

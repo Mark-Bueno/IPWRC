@@ -4,6 +4,7 @@ import {GlobalVariables} from '../shared/global-variables';
 import {Router} from '@angular/router';
 import {CartService} from '../services/cart.service';
 import {Order} from '../models/order.model';
+import {OrderService} from '../services/order.service';
 
 @Component({
   selector: 'app-order',
@@ -17,7 +18,8 @@ export class OrderComponent implements OnInit {
   cartProducts = [];
   totalPrice = 0;
 
-  constructor(private globals: GlobalVariables, private cartService: CartService, private router: Router) {
+  constructor(private globals: GlobalVariables,
+              private cartService: CartService, private router: Router, private orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -67,10 +69,10 @@ export class OrderComponent implements OnInit {
   addOrder() {
     const address = this.orderForm.controls.orderAddress.value;
     const zipcode = this.orderForm.controls.orderZipcode.value;
-    const total = this.orderForm.controls.orderTotal.value;
-    this.order = new Order(null, address, zipcode, total, null);
-    // this.orderService.newOrder(this.order).subscribe(() => {
-    //   this.router.navigate(['../home']).then();
-    // });
+    const total = this.totalPrice;
+    this.order = new Order(null, address, zipcode, total, null, null);
+    this.orderService.addNewOrder(this.order).subscribe(() => {
+      this.router.navigate(['../home']).then();
+    });
   }
 }
