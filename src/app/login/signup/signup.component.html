@@ -7,9 +7,9 @@
       </div>
     </mat-card-header>
     <div class="loginContainer">
-      <form class="form-container" [formGroup]="loginForm" (ngSubmit)="login()">
+      <form class="form-container" [formGroup]="loginForm" (ngSubmit)="signup()">
         <div>
-          <p [hidden]="authorized" style="color: red">Foute gebruikersnaam/wachtwoord</p>
+          <p [hidden]="nameTaken" style="color: red">Gebruiker bestaat al</p>
           <label class="text">Gebruikersnaam</label>
           <input type="text"
                  class="form-control"
@@ -17,6 +17,8 @@
                  formControlName="loginUsername"
                  required>
         </div>
+        <br>
+        <p [hidden]="passwordMatch" style="color: red">Wachtwoorden komen niet overeen</p>
         <div>
           <label class="text" id="password">Wachtwoord</label>
           <input type="password"
@@ -25,14 +27,23 @@
                  formControlName="loginPassword"
                  required>
         </div>
+        <div>
+          <label class="text" id="passwordTwo">Herhaal wachtwoord</label>
+          <input type="password"
+                 class="form-control"
+                 name="password"
+                 formControlName="loginRepeatPassword"
+                 required>
+        </div>
         <mat-card-footer>
           <div class="button">
+            <button id="cancel" class="btn" [routerLink]="['/login']">
+              <i class="fa fa-arrow-left"></i>Annuleren
+            </button>
             <button id="submit" type="submit" class="btn" [disabled]="!loginForm.valid">
-              <i class="fa fa-sign-in"></i>Inloggen
+              <i class="fa fa-plus"></i>Account maken
             </button>
           </div>
-          <br>
-          <a [routerLink]="['/signup']">Maak een nieuwe account</a>
         </mat-card-footer>
       </form>
     </div>

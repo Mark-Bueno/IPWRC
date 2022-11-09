@@ -3,12 +3,13 @@
     <div class="dropdown">
       <button id="dropdownMenuButton" data-toggle="dropdown">
         <i class="fa fa-user fa-2x"></i>
-        mark
+        {{username}}
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a [routerLink]="['/']">
+        <a [routerLink]="['/']" (click)="logout()">
           <i class="fa fa-sign-out"></i>Uitloggen</a>
+        <a [routerLink]="['../my-orders']">Bestellingen</a>
       </div>
     </div>
     <div class="logo">
@@ -19,12 +20,10 @@
 
     <div class="buttongroup">
       <button [routerLink]="['/products']">
-        <i class="fa fa-shopping-bag fa-2x"></i>
-        Producten
+        <i class="fa fa-shopping-basket fa-2x"></i>
       </button>
       <button [routerLink]="['/cart']">
         <i class="fa fa-shopping-cart fa-2x"></i>
-        Kart
       </button>
     </div>
   </mat-toolbar-row>

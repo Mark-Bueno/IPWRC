@@ -1,3 +1,13 @@
+div {
+  text-align: center;
+}
+
+h2 {
+  padding-top: 1em;
+  font-weight: normal;
+  color: rgb(37, 150, 190);
+}
+
 mat-card {
   width: 500px;
   border-style: solid;
@@ -48,6 +58,8 @@ form {
 .button {
   text-align: center;
   margin-top: 40px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 #password {
@@ -79,4 +91,8 @@ img {
 
 mat-card-footer {
   text-align: center;
+}
+
+#delete {
+  background-color: deeppink;
 }

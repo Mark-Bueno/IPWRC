@@ -8,23 +8,45 @@ import {CartComponent} from '../cart/cart.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {SharedModule} from '../shared/shared.module';
 import {MatCardModule} from '@angular/material';
+import {AuthenticationGuard} from './authentication-guard';
+import {SignupComponent} from '../login/signup/signup.component';
+import {ProductAddComponent} from '../admin/product-add/product-add.component';
+import {ProductEditComponent} from '../admin/product-edit/product-edit.component';
+import {OrderComponent} from '../order/order.component';
+import {OrderOverviewComponent} from '../order/order-overview/order-overview.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'products', component: ProductsComponent},
-  {path: 'products/:id', component: ProductInformationComponent},
-  {path: 'cart', component: CartComponent},
-  {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'},
+  {path: 'signup', component: SignupComponent},
+  {path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard]},
+  {path: 'products', component: ProductsComponent, canActivate: [AuthenticationGuard]},
+  {path: 'products/:id', component: ProductInformationComponent, canActivate: [AuthenticationGuard]},
+  {path: 'order', component: OrderComponent, canActivate: [AuthenticationGuard]},
+  {path: 'my-orders', component: OrderOverviewComponent, canActivate: [AuthenticationGuard]},
+  {path: 'cart', component: CartComponent, canActivate: [AuthenticationGuard]},
+  {
+    path: 'admin/products/add',
+    component: ProductAddComponent,
+    canActivate: [AuthenticationGuard],
+    data: {role: 'admin'}
+  },
+  {
+    path: 'admin/products/:id',
+    component: ProductEditComponent,
+    canActivate: [AuthenticationGuard],
+    data: {role: 'admin'}
+  },
+  {path: '404', component: NotFoundComponent, canActivate: [AuthenticationGuard]},
+  {path: '**', redirectTo: '/404', canActivate: [AuthenticationGuard]},
 ];
 
 @NgModule({
   declarations: [
     NotFoundComponent],
   imports: [RouterModule.forRoot(routes), SharedModule, MatCardModule],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthenticationGuard]
 })
 export class RoutingModule {
 }

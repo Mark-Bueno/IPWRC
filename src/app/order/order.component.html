@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="loginCard">
+  <mat-card class="mat-card" style="background-color: white; border-radius: 20px">
+    <h2>Bestelling Maken</h2>
+    <div class="loginContainer">
+      <form class="form-container" [formGroup]="orderForm" (ngSubmit)="addOrder()">
+        <div>
+          <label class="text">Adres</label>
+          <input type="text"
+                 class="form-control"
+                 name="address"
+                 maxlength="255"
+                 formControlName="orderAddress"
+                 required>
+        </div>
+        <div>
+          <label class="text">Postcode</label>
+          <input type="text"
+                 class="form-control"
+                 name="zipcode"
+                 minlength="6"
+                 maxlength="6"
+                 formControlName="orderZipcode"
+                 required>
+        </div>
+        <br>
+        <div>
+          <span>Totaal: {{totalPrice | number : '1.2-2'}}</span>
+        </div>
+        <mat-card-footer>
+          <div class="button">
+            <button id="submit" type="submit" class="btn" [disabled]="!orderForm.valid">
+              <i class="fa fa-plus-circle"></i>Bestellen
+            </button>
+            <button id="terug" type="button" class="btn" [routerLink]="['../cart']">
+              <i class="fa fa-shopping-cart"></i>Wijzig Kart
+            </button>
+            <button id="view" class="btn" (click)="addOrder()">
+              Bestelling Bekijken</button>
+          </div>
+        </mat-card-footer>
+      </form>
+    </div>
+  </mat-card>
+</div>
+

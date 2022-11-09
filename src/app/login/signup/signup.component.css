@@ -46,11 +46,17 @@ form {
 }
 
 .button {
+  display: flex;
+  justify-content: space-evenly;
   text-align: center;
   margin-top: 40px;
 }
 
 #password {
+  padding-top: 10px;
+}
+
+#passwordTwo {
   padding-top: 10px;
 }
 
@@ -67,6 +73,10 @@ form {
 
 #submit {
   background-color: mediumslateblue;
+}
+
+#cancel{
+  background-color: mediumvioletred;
 }
 
 i {

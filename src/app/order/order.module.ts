@@ -1,23 +1,25 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {LoginComponent} from './login.component';
+import {OrderComponent} from './order.component';
 import {SharedModule} from '../shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatCardModule, MatInputModule} from '@angular/material';
-import { SignupComponent } from './signup/signup.component';
+import {MatCardModule} from '@angular/material/card';
 import {RouterModule} from '@angular/router';
+import { OrderOverviewComponent } from './order-overview/order-overview.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent],
+  declarations: [
+    OrderComponent,
+    OrderOverviewComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatInputModule,
-    RouterModule,
-  ], exports: [LoginComponent]
+    RouterModule
+  ]
 })
-export class LoginModule {
+export class OrderModule {
 }

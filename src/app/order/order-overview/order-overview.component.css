@@ -1,0 +1,51 @@
+table {
+  table-layout: fixed;
+  margin: auto;
+}
+
+h2 {
+  padding-top: 1em;
+  font-weight: normal;
+  color: rgb(37, 150, 190);
+}
+
+.orderContainer {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  height: 500px;
+}
+
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 50px;
+}
+
+th {
+  width: 100px;
+  background-color: #e3e2e2;
+}
+
+.order-id {
+  width: 10%
+}
+
+.order-address {
+  width: 30%
+}
+
+.order-date {
+  width: 10%
+}
+
+.order-total {
+  width: 10%
+}
+
+.fa-eye {
+  cursor: pointer;
+}
+
+
