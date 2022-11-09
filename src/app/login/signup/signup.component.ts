@@ -36,6 +36,8 @@ export class SignupComponent implements OnInit {
         const repeatPassword = this.loginForm.controls.loginRepeatPassword.value;
         if (password === repeatPassword) {
             this.userService.signup(username, password).subscribe(async () => {
+              await this.router.navigate(['/login']).then(() => {
+              });
                 }, () => {
                     this.nameTaken = false;
                 }

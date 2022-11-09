@@ -6,12 +6,12 @@
   <br>
   <table *ngIf="orders.length > 0; else emptyOrders">
     <thead>
-    <th>Order</th>
-    <th>Date</th>
-    <th>Address</th>
-    <th>Zipcode</th>
-    <th>Total</th>
-    <th>Products</th>
+    <th>ID</th>
+    <th>Datum</th>
+    <th>Addres</th>
+    <th>Postcode</th>
+    <th>Totaal</th>
+    <th>Producten</th>
     </thead>
     <tr class="order" *ngFor="let order of orders">
       <td class="order-id">{{order.id}}</td>

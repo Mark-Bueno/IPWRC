@@ -3,13 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Cart} from '../models/cart.model';
 import {AuthService} from './auth.service';
+import {enviroment} from '../shared/enviroment/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private baseUrl = 'http://localhost:8080/api/carts';
+  private baseUrl = `${enviroment.baseUrl}/api/carts`;
 
   constructor(private http: HttpClient, private authService: AuthService) {
   }

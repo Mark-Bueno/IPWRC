@@ -14,6 +14,8 @@ import {AuthService} from '../../services/auth.service';
 export class ProductInformationComponent implements OnInit {
   public product;
   public productId;
+  public productNotFound = false;
+
   constructor(private router: Router, private productService: ProductService,
               private route: ActivatedRoute, private cartService: CartService, private globalVariables: GlobalVariables,
               private authService: AuthService) {
@@ -27,19 +29,20 @@ export class ProductInformationComponent implements OnInit {
         .subscribe(
           (product: Product) => {
             this.product = product;
-          }, () => {
-            this.router.navigate(['/404']);
+            if (product === null) {
+              this.productNotFound = true;
+            }
           });
     });
   }
 
   addToCart() {
     this.cartService.addProductInCart(this.productId).subscribe(() => {
-      this.goToCard();
+      this.goToCart();
     });
   }
 
-  goToCard() {
+  goToCart() {
     this.router.navigate(['/cart']);
   }
 
