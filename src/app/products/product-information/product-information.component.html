@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="loginCard">
   <mat-card class="mat-card" style="background-color: white; border-radius: 20px">
-    <div class="loginContainer">
+    <div class="loginContainer" *ngIf="!this.productNotFound; else emptyProduct">
       <mat-card-header>
         <mat-card-title><h3>{{product?.name}}</h3></mat-card-title>
         <mat-card-subtitle>{{product?.description}}</mat-card-subtitle>
@@ -18,5 +18,10 @@
         </button>
       </mat-card-footer>
     </div>
+    <ng-template #emptyProduct>
+      <div class="empty-product">
+        <span>Product niet gevonden</span>
+      </div>
+    </ng-template>
   </mat-card>
 </div>

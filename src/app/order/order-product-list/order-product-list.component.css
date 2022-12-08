@@ -1,0 +1,30 @@
+h1 {
+  text-align: center;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  table-layout: fixed;
+  width: 85%;
+}
+
+.amountColumn {
+  width: 10%;
+}
+
+.imageColumn {
+  width: 20%;
+}
+
+.itemColumn {
+  width: 35%;
+}
+
+.priceColumn {
+  width: 20%;
+  text-align: right;
+}
