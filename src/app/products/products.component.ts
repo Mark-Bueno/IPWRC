@@ -3,7 +3,6 @@ import {Product} from '../models/product.model';
 import {Router} from '@angular/router';
 import {ProductService} from '../services/product.service';
 import {CartService} from '../services/cart.service';
-import {GlobalVariables} from '../shared/global-variables';
 import {UserService} from '../services/user.service';
 
 @Component({
@@ -17,7 +16,7 @@ export class ProductsComponent implements OnInit {
   isAdmin = false;
   productsOnPage = 0;
 
-  constructor(private router: Router, private productService: ProductService, cartService: CartService, private globals: GlobalVariables,
+  constructor(private router: Router, private productService: ProductService, cartService: CartService,
               private userService: UserService) {
   }
 
@@ -26,7 +25,6 @@ export class ProductsComponent implements OnInit {
       this.role = user.role;
       this.checkIfAdmin();
     });
-    this.globals.setPage('products');
     this.getProducts();
   }
 

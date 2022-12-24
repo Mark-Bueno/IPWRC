@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {GlobalVariables} from '../../shared/global-variables';
 import {ProductService} from '../../services/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../models/product.model';
@@ -15,12 +14,11 @@ export class ProductEditComponent implements OnInit {
   product: Product = new Product(0, '', '', 0, '');
   productId: number;
 
-  constructor(private globals: GlobalVariables, private productService: ProductService,
+  constructor(private productService: ProductService,
               private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.globals.setPage('productEdit');
     this.productForm = new FormGroup({
       productName: new FormControl(),
       productPrice: new FormControl(),

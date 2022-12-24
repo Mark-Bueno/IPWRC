@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../services/order.service';
-import {GlobalVariables} from '../../shared/global-variables';
-import {MatDialog} from "@angular/material/dialog";
-import {OrderProductListComponent} from "../order-product-list/order-product-list.component";
+import {MatDialog} from '@angular/material/dialog';
+import {OrderProductListComponent} from '../order-product-list/order-product-list.component';
 
 @Component({
   selector: 'app-order-overview',
@@ -13,11 +12,10 @@ export class OrderOverviewComponent implements OnInit {
 
   orders = [];
 
-  constructor(private orderService: OrderService, private globals: GlobalVariables, public dialog: MatDialog) {
+  constructor(private orderService: OrderService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.globals.setPage('my-orders');
     this.orderService.getUserOrders().subscribe((orders) => {
       this.orders = orders;
       console.log(orders);

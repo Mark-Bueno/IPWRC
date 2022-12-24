@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {GlobalVariables} from '../../shared/global-variables';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Product} from '../../models/product.model';
 import {ProductService} from '../../services/product.service';
@@ -14,11 +13,10 @@ export class ProductAddComponent implements OnInit {
   productForm: FormGroup;
   product: Product;
 
-  constructor(private globals: GlobalVariables, private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router) {
   }
 
   ngOnInit() {
-    this.globals.setPage('productAdd');
     this.productForm = new FormGroup({
       productName: new FormControl(),
       productPrice: new FormControl(),

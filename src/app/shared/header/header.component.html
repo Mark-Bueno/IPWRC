@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <mat-toolbar-row>
+  <mat-toolbar-row *ngIf="authService.isLoggedIn()">
     <div class="dropdown">
       <button id="dropdownMenuButton" data-toggle="dropdown">
         <i class="fa fa-user fa-2x"></i>

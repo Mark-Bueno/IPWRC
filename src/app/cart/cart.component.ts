@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
-import {GlobalVariables} from '../shared/global-variables';
 import {Router} from '@angular/router';
 
 @Component({
@@ -12,11 +11,10 @@ export class CartComponent implements OnInit {
   cartProducts = [];
   totalPrice = 0;
 
-  constructor(private cartService: CartService, private globalVariables: GlobalVariables, private router: Router) {
+  constructor(private cartService: CartService, private router: Router) {
   }
 
   ngOnInit() {
-    this.globalVariables.setPage('cart');
     this.getCartProducts();
   }
 

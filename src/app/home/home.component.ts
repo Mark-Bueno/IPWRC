@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {GlobalVariables} from '../shared/global-variables';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +12,10 @@ export class HomeComponent implements OnInit {
     'https://primedia.primark.com/i/primark/210067018-01?w=1000&h=1000&img404=missing_product&v=1638145689433&locale=nl-*,en-*,*',
     'https://primedia.primark.com/i/primark/210066420-01?w=1000&h=1000&img404=missing_product&v=1638145755132&locale=nl-*,en-*,*'];
 
-  constructor(private globalVariables: GlobalVariables) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.globalVariables.setPage('home');
   }
 
   changeImageNext() {

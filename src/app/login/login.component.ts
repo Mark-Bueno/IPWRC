@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
-import {GlobalVariables} from '../shared/global-variables';
 import {AuthService} from '../services/auth.service';
+import {EventEmitter} from 'events';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +11,15 @@ import {AuthService} from '../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  userNameEmitter: EventEmitter = new EventEmitter();
   loginForm: FormGroup;
   authorized = true;
 
-  constructor(private userService: UserService, private router: Router, private globalVariables: GlobalVariables,
+  constructor(private userService: UserService, private router: Router,
               private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.globalVariables.setPage('login');
     this.loginForm = new FormGroup({
       loginUsername: new FormControl(),
       loginPassword: new FormControl()
@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
     this.userService.login(username, password).subscribe(async (response) => {
         const token = response.headers.get('Authorization');
         this.authService.storeToken(token);
+        this.userNameEmitter.emit('login', username);
+
         await this.router.navigate(['/home']).then(() => {
         });
       },
