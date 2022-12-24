@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {UserService} from '../../services/user.service';
 import {EventEmitter} from 'events';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-header',
@@ -10,18 +11,19 @@ import {EventEmitter} from 'events';
 })
 export class HeaderComponent implements OnInit {
 
-  username: string;
-  eventEmitter: EventEmitter = new EventEmitter();
+  username = '';
 
-  constructor(private authService: AuthService, private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService, private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.eventEmitter.on('login', (username) => {
-      console.log('yo');
-      this.username = username;
-    });
+    this.dataService.currentMessage.subscribe(username => this.username = username);
   }
+
+  setUsername(username) {
+    this.username = username;
+  }
+
 
   logout() {
     this.authService.clearLocalStorage();

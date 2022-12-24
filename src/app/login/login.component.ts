@@ -4,6 +4,7 @@ import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 import {EventEmitter} from 'events';
+import {DataService} from "../services/data.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   authorized = true;
 
   constructor(private userService: UserService, private router: Router,
-              private authService: AuthService) {
+              private authService: AuthService, private dataService: DataService) {
   }
 
   ngOnInit() {
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(username, password).subscribe(async (response) => {
         const token = response.headers.get('Authorization');
         this.authService.storeToken(token);
-        this.userNameEmitter.emit('login', username);
+        this.dataService.changeMessage(username);
 
         await this.router.navigate(['/home']).then(() => {
         });
