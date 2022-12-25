@@ -3,8 +3,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
-import {EventEmitter} from 'events';
-import {DataService} from "../services/data.service";
+import {UsernameService} from '../services/username.service';
+
 
 @Component({
   selector: 'app-login',
@@ -12,12 +12,11 @@ import {DataService} from "../services/data.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  userNameEmitter: EventEmitter = new EventEmitter();
   loginForm: FormGroup;
   authorized = true;
 
   constructor(private userService: UserService, private router: Router,
-              private authService: AuthService, private dataService: DataService) {
+              private authService: AuthService, private usernameService: UsernameService) {
   }
 
   ngOnInit() {
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(username, password).subscribe(async (response) => {
         const token = response.headers.get('Authorization');
         this.authService.storeToken(token);
-        this.dataService.changeMessage(username);
+        this.usernameService.changeMessage(username);
 
         await this.router.navigate(['/home']).then(() => {
         });

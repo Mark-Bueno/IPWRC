@@ -1,13 +1,17 @@
 <div class="upper-container">
+  <h2>Welkom {{username}}!</h2>
   <div class="slider">
-    <img id="sliderImage"
-         src="https://primedia.primark.com/i/primark/210070147-01?w=1000&h=1000&img404=missing_product&v=1638144666104&locale=nl-*,en-*,*"
-         alt="Image not found." width="35%" height="625px" style="border-radius: 10px;">
-    <a class="next" style="color: white; margin-right: 40px" (click)="changeImageNext()"> <i
-      class="fa fa-chevron-right" style="font-size: 30px; color:white; "></i>
-    </a>
-    <a class="prev" style="color: white;margin-left: 40px" (click)="changeImagePrev()"> <i class="fa fa-chevron-left"
-                                                                                           style="font-size: 30px; color:white;"></i>
-    </a>
+    <div class="slide-track">
+      <div class="slide" *ngFor="let product of products">
+      <img class="sliderImage"
+           src={{product?.imagePath}}
+           alt="Image not found." height="400px" style="border-radius: 10px;">
+      </div>
+      <div class="slide" *ngFor="let product of products">
+        <img class="sliderImage"
+             src={{product?.imagePath}}
+             alt="Image not found." height="400px" style="border-radius: 10px;">
+      </div>
+    </div>
   </div>
 </div>

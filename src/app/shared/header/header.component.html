@@ -1,30 +1,33 @@
 <mat-toolbar>
   <mat-toolbar-row *ngIf="authService.isLoggedIn()">
     <div class="dropdown">
-      <button id="dropdownMenuButton" data-toggle="dropdown">
+      <button class="dropdownMenuButton" data-toggle="dropdown">
         <i class="fa fa-user fa-2x"></i>
         {{username}}
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a [routerLink]="['/']" (click)="logout()">
-          <i class="fa fa-sign-out"></i>Uitloggen</a>
         <a [routerLink]="['/my-orders']">Bestellingen</a>
+        <a [routerLink]="['/']" (click)="logout()">Uitloggen</a>
       </div>
     </div>
+
     <div class="logo">
       <button id="logoButton" [routerLink]="['/home']" style="margin-left: 60%; margin-top: 1em">
         <img src="..\assets\images\logo.png" alt="test" width="100px">
       </button>
     </div>
 
-    <div class="buttongroup">
-      <button [routerLink]="['/products']">
-        <i class="fa fa-shopping-basket fa-2x"></i>
+    <div class="dropdown">
+      <button class="buttonGroup" data-toggle="dropdown">
+        Menu
+        <i class="fa fa-caret-down"></i>
       </button>
-      <button [routerLink]="['/cart']">
-        <i class="fa fa-shopping-cart fa-2x"></i>
-      </button>
+      <div class="dropdown-content">
+        <a [routerLink]="['/products']">
+          Producten</a>
+        <a [routerLink]="['/cart']">Kart</a>
+      </div>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
