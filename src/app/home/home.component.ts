@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../services/product.service';
 import {UsernameService} from '../services/username.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   products = [];
   username = '';
 
-  constructor(private productsService: ProductService, private usernameService: UsernameService) {
+  constructor(private productsService: ProductService, private usernameService: UsernameService, private router: Router) {
   }
 
   ngOnInit() {
@@ -31,4 +32,11 @@ export class HomeComponent implements OnInit {
     this.usernameService.currentMessage.subscribe(username => this.username = username);
   }
 
+  getSlideTrackWidth() {
+    return this.products.length * 2;
+  }
+
+  goToProduct(product) {
+    this.router.navigate(['/products/' + product.id], {state: {data: product}}).then();
+  }
 }

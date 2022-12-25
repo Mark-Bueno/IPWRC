@@ -1,8 +1,9 @@
 <div class="upper-container">
   <h2>Welkom {{username}}!</h2>
+  <h3> Hier krijg je de beste producten.</h3>
   <div class="slider">
-    <div class="slide-track">
-      <div class="slide" *ngFor="let product of products">
+    <div class="slide-track" [style.width]="getSlideTrackWidth()">
+      <div class="slide" *ngFor="let product of products" (click)="goToProduct(product)">
       <img class="sliderImage"
            src={{product?.imagePath}}
            alt="Image not found." height="400px" style="border-radius: 10px;">

@@ -16,8 +16,7 @@ i {
 
 .slide-track {
   display: flex;
-  width: calc(400px * 6);
-  animation: scroll 10s linear infinite;
+  animation: scroll 30s linear infinite;
 }
 
 .slide-track:hover {
@@ -34,7 +33,7 @@ i {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-400px * 3));
+    transform: translateX(calc(-400px * 10));
   }
 
 }
@@ -43,7 +42,13 @@ h2 {
   padding-top: 1em;
   font-weight: normal;
   color: rgb(37, 150, 190);
-  font-family: "Brush Script MT";
+  font-family: cursive;
+  font-size: 40px;
+}
+
+h3 {
+  font-family: cursive;
+  color: rgb(9, 114, 143);
 }
 
 img {
