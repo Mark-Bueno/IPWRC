@@ -10,13 +10,33 @@ i {
   margin: auto;
   padding-top: 1.5em;
   display: grid;
-  place-items: center;
+  width: 90%;
+  /*place-items: center;*/
   overflow-x: hidden;
 }
 
+.slider::before, .slider::after {
+  background: linear-gradient(to right, rgb(255, 255, 255, 1) 0%, rgb(255, 255, 255, 0) 100%);
+  content: '';
+  height: 100%;
+  position: absolute;
+  width: 15%;
+  z-index: 2;
+}
+
+.slider::before {
+  left: 0;
+}
+
+.slider::after {
+  right: 0;
+  transform: rotate(180deg);
+}
+
+
 .slide-track {
   display: flex;
-  animation: scroll 30s linear infinite;
+  animation: scroll 40s linear infinite;
 }
 
 .slide-track:hover {
