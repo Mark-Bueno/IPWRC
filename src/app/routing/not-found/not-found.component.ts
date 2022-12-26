@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {GlobalVariables} from '../../shared/global-variables';
+import {Component, OnInit} from '@angular/core';;
 
 @Component({
   selector: 'app-not-found',
@@ -8,11 +7,10 @@ import {GlobalVariables} from '../../shared/global-variables';
 })
 export class NotFoundComponent implements OnInit {
 
-  constructor(private globalVariables: GlobalVariables) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.globalVariables.setPage('404');
   }
 
 }

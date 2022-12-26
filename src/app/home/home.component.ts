@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {GlobalVariables} from '../shared/global-variables';
+import {ProductService} from '../services/product.service';
+import {UsernameService} from '../services/username.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,38 +11,32 @@ import {GlobalVariables} from '../shared/global-variables';
 export class HomeComponent implements OnInit {
 
   index = 0;
-  images = ['https://primedia.primark.com/i/primark/210070147-01?w=1000&h=1000&img404=missing_product&v=1638144666104&locale=nl-*,en-*,*',
-    'https://primedia.primark.com/i/primark/210067018-01?w=1000&h=1000&img404=missing_product&v=1638145689433&locale=nl-*,en-*,*',
-    'https://primedia.primark.com/i/primark/210066420-01?w=1000&h=1000&img404=missing_product&v=1638145755132&locale=nl-*,en-*,*'];
+  products = [];
+  username = '';
 
-  constructor(private globalVariables: GlobalVariables) {
+  constructor(private productsService: ProductService, private usernameService: UsernameService, private router: Router) {
   }
 
   ngOnInit() {
-    this.globalVariables.setPage('home');
+    this.getProducts();
+    this.setUsername();
   }
 
-  changeImageNext() {
-    this.index++;
-    if (this.index === this.images.length) {
-      this.index = 0;
-    }
-    const image = document.getElementById('sliderImage');
-    if (image instanceof HTMLImageElement) {
-      image.src = this.images[this.index];
-    }
+  getProducts() {
+    this.productsService.getAll().subscribe((products) => {
+      this.products = products;
+    });
   }
 
+  setUsername() {
+    this.usernameService.currentMessage.subscribe(username => this.username = username);
+  }
 
-  changeImagePrev() {
-    this.index--;
-    if (this.index < 0) {
-      this.index = this.images.length - 1;
-    }
-    const a = document.getElementById('sliderImage');
-    if (a instanceof HTMLImageElement) {
-      a.src = this.images[this.index];
-    }
+  getSlideTrackWidth() {
+    return this.products.length * 2;
+  }
 
+  goToProduct(product) {
+    this.router.navigate(['/products/' + product.id], {state: {data: product}}).then();
   }
 }

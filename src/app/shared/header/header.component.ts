@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {GlobalVariables} from '../global-variables';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {UserService} from '../../services/user.service';
+import {EventEmitter} from 'events';
+import {UsernameService} from '../../services/username.service';
 
 @Component({
   selector: 'app-header',
@@ -10,36 +11,19 @@ import {UserService} from '../../services/user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  username: string;
+  username = '';
 
-  constructor(private globalVariables: GlobalVariables, private authService: AuthService, private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService, private usernameService: UsernameService) {
   }
 
   ngOnInit() {
-    if ((this.globalVariables.getPage() !== 'login')) {
-      this.userService.getAuthenticatedUser().subscribe(async (user) => {
-        this.username = user.username;
-      });
-    }
-    this.setHeaderStylingByPage();
+    this.setUsername();
   }
 
-  setHeaderStylingByPage() {
-    const buttons = document.getElementsByTagName('button');
-    if (this.globalVariables.getPage() === 'login') {
-      Array.from(buttons).forEach((button) => {
-        if (button !== document.getElementById('submit') && button !== document.getElementById('cancel')) {
-          button.disabled = true;
-          button.style.display = 'none';
-        }
-      });
-    } else {
-      Array.from(buttons).forEach((button) => {
-        button.disabled = false;
-        button.style.display = 'default';
-      });
-    }
+  setUsername() {
+    this.usernameService.currentMessage.subscribe(username => this.username = username);
   }
+
 
   logout() {
     this.authService.clearLocalStorage();

@@ -23,11 +23,16 @@ export class AuthenticationGuard implements CanActivate {
           return false;
         }
       }, () => {
+        this.clearLocalStorage();
         this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}}).then();
       });
       return true;
     }
     this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}}).then();
     return;
+  }
+
+  clearLocalStorage() {
+    localStorage.clear();
   }
 }
