@@ -6,19 +6,20 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {RouterModule} from '@angular/router';
 import {OrderOverviewComponent} from './order-overview/order-overview.component';
-import {OrderProductListComponent} from './order-product-list/order-product-list.component';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
 import {CartProductListComponent} from './cart-product-list/cart-product-list.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 
 @NgModule({
   declarations: [
     OrderComponent,
     OrderOverviewComponent,
-    OrderProductListComponent,
-    CartProductListComponent
+    InvoiceComponent,
+    CartProductListComponent,
+    InvoiceComponent
   ],
-  entryComponents: [OrderProductListComponent, CartProductListComponent],
+  entryComponents: [InvoiceComponent, CartProductListComponent],
   imports: [
     CommonModule,
     SharedModule,

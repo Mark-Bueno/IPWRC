@@ -2,24 +2,24 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-order-product-list',
-  templateUrl: './order-product-list.component.html',
-  styleUrls: ['./order-product-list.component.css']
+  selector: 'app-invoice',
+  templateUrl: './invoice.component.html',
+  styleUrls: ['./invoice.component.css']
 })
-export class OrderProductListComponent implements OnInit {
+export class InvoiceComponent implements OnInit {
 
   orderProducts = [];
   totalPrice = 0;
-  orderId = 0;
+  order = null;
 
-  constructor(public dialogRef: MatDialogRef<OrderProductListComponent>,
+  constructor(public dialogRef: MatDialogRef<InvoiceComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit() {
     this.orderProducts = this.data.orderProducts;
     this.totalPrice = this.calculateTotalPrice();
-    this.orderId = this.data.orderId;
+    this.order = this.data.order;
   }
 
   onNoClick(): void {

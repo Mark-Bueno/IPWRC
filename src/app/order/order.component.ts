@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {CartService} from '../services/cart.service';
 import {Order} from '../models/order.model';
 import {OrderService} from '../services/order.service';
-import {OrderProductListComponent} from './order-product-list/order-product-list.component';
 import {MatDialog} from '@angular/material/dialog';
 import {CartProductListComponent} from './cart-product-list/cart-product-list.component';
 

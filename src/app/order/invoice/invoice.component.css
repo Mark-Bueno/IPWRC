@@ -2,6 +2,10 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  text-align: center;
+}
+
 div {
   display: flex;
   justify-content: center;
@@ -9,22 +13,34 @@ div {
 
 table {
   table-layout: fixed;
-  width: 85%;
+  width: 100%;
 }
 
 .amountColumn {
-  width: 10%;
-}
-
-.imageColumn {
   width: 20%;
 }
 
+.imageColumn {
+  width: 30%;
+}
+
 .itemColumn {
-  width: 35%;
+  width: 30%;
 }
 
 .priceColumn {
   width: 20%;
-  text-align: right;
+}
+
+tr {
+  width: 100%;
+}
+
+td {
+  padding: 1em;
+  text-align: left;
+}
+
+.topTableRow {
+  border-top: 1px solid gray;
 }
