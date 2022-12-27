@@ -79,5 +79,13 @@ mat-card-footer {
     grid-template-columns: 1fr;
     justify-items: center;
   }
+
+  #subTitle {
+    display: block;
+  }
+
+  span {
+    display: block;
+  }
 }
 
