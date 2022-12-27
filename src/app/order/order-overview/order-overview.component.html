@@ -1,0 +1,29 @@
+<div class="orderContainer">
+  <h2>
+    Bestellingen
+  </h2>
+  <br>
+  <table *ngIf="orders.length > 0; else emptyOrders">
+    <thead>
+    <th class="order-id">ID</th>
+    <th class="order-date">Datum</th>
+    <th class="order-address">Addres</th>
+    <th class="order-zipcode">Postcode</th>
+    <th class="order-total">Totaal</th>
+    <th class="order-id">Producten</th>
+    </thead>
+    <tr class="order" *ngFor="let order of orders">
+      <td class="order-id">{{order.id}}</td>
+      <td class="order-date">{{order.date | date: 'dd/MM/yyyy'}}</td>
+      <td class="order-address">{{order.address}}</td>
+      <td class="order-zipcode">{{order.zipcode}}</td>
+      <td class="order-total">€{{order.total  | number : '1.2-2'}}</td>
+      <td class="order-id"><i class="fa fa-eye" (click)="getInvoice(order)"></i></td>
+    </tr>
+  </table>
+  <ng-template #emptyOrders>
+    <div class="empty-cart">
+      <span>Geen Bestellingen</span>
+    </div>
+  </ng-template>
+</div>
