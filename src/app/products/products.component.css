@@ -74,3 +74,10 @@ mat-card-footer {
   justify-content: space-around;
 }
 
+@media all and (max-width: 1000px) {
+  ul {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+

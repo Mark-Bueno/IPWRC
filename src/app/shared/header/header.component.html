@@ -1,9 +1,9 @@
 <mat-toolbar>
   <mat-toolbar-row *ngIf="authService.isLoggedIn()">
-    <div class="dropdown">
+    <div class="dropdown" id="firstDropdown">
       <button class="dropdownMenuButton" data-toggle="dropdown">
         <i class="fa fa-user fa-2x"></i>
-        {{username}}
+        <span>{{username}}</span>
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
@@ -13,12 +13,12 @@
     </div>
 
     <div class="logo">
-      <button id="logoButton" [routerLink]="['/home']" style="margin-left: 60%; margin-top: 1em">
+      <button id="logoButton" [routerLink]="['/home']">
         <img src="..\assets\images\logo.png" alt="test" width="100px">
       </button>
     </div>
 
-    <div class="dropdown">
+    <div class="dropdown" id="secondDropdown">
       <button class="buttonGroup" data-toggle="dropdown">
         Menu
         <i class="fa fa-caret-down"></i>
