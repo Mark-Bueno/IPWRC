@@ -1,0 +1,44 @@
+<h1>Bestelling #{{order.id}}</h1>
+<h2 mat-dialog-title>{{order.date | date: 'dd/MM/yyyy'}}</h2>
+<div mat-dialog-content>
+  <table>
+    <tr>
+      <td class="amountColumn"><b>Aantal:</b></td>
+      <td class="imageColumn"><b>Producten:</b></td>
+      <td class="itemColumn"></td>
+      <td class="priceColumn"></td>
+    </tr>
+    <tr *ngFor="let orderProduct of orderProducts">
+      <td class="amountColumn">
+        {{orderProduct?.amount}}x
+      </td>
+      <td class="imageColumn">
+        <img src="{{orderProduct.productPhoto}}" alt="Image not found." width="50px" height="50px"
+             style="border-radius: 10px;">
+      </td>
+      <td class="itemColumn">
+        {{orderProduct.productName}}
+      </td>
+      <td class="priceColumn">
+        €{{orderProduct.productPrice | number : '1.2-2'}}
+      </td>
+    </tr>
+    <tr class="topTableRow">
+      <td class="itemColumn"></td>
+      <td class="priceColumn"><b>Postcode:</b></td>
+      <td class="itemColumn"><b>Adres:</b></td>
+      <td class="priceColumn"><b>Totaal:</b></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>{{order.zipcode}}</td>
+      <td class="itemColumn">{{order.address}}</td>
+      <td class="priceColumn"> €{{totalPrice | number : '1.2-2'}}</td>
+      <td class="add"></td>
+      <td class="remove"></td>
+    </tr>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button class="btn-danger" (click)="onNoClick()">Sluiten</button>
+</div>

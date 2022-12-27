@@ -32,6 +32,10 @@ th {
   width: 10%
 }
 
+.order-zipcode {
+  width: 10%
+}
+
 .order-address {
   width: 30%
 }
@@ -47,5 +51,17 @@ th {
 .fa-eye {
   cursor: pointer;
 }
+
+@media all and (max-width: 1000px){
+  .order-address {
+    display: none;
+  }
+
+  .order-zipcode {
+    display: none;
+  }
+}
+
+
 
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../services/order.service';
 import {MatDialog} from '@angular/material/dialog';
-import {OrderProductListComponent} from '../order-product-list/order-product-list.component';
+import {InvoiceComponent} from '../invoice/invoice.component';
 
 @Component({
   selector: 'app-order-overview',
@@ -25,9 +25,9 @@ export class OrderOverviewComponent implements OnInit {
   getOrderProducts(order) {
     this.orderService.getUserOrderProducts(order.id).subscribe((orderProducts) => {
       this.dialog.closeAll();
-      const dialogRef = this.dialog.open(OrderProductListComponent, {
+      const dialogRef = this.dialog.open(InvoiceComponent, {
         width: '600px',
-        data: {orderProducts, orderId: order.id},
+        data: {orderProducts, order},
         hasBackdrop: true
       });
     });
