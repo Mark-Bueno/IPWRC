@@ -22,7 +22,7 @@ export class OrderOverviewComponent implements OnInit {
     });
   }
 
-  getOrderProducts(order) {
+  getInvoice(order) {
     this.orderService.getUserOrderProducts(order.id).subscribe((orderProducts) => {
       this.dialog.closeAll();
       const dialogRef = this.dialog.open(InvoiceComponent, {
