@@ -33,7 +33,7 @@
       <td></td>
       <td>{{order.zipcode}}</td>
       <td class="itemColumn">{{order.address}}</td>
-      <td class="priceColumn"> €{{totalPrice | number : '1.2-2'}}</td>
+      <td class="priceColumn"> €{{order.total | number : '1.2-2'}}</td>
       <td class="add"></td>
       <td class="remove"></td>
     </tr>
