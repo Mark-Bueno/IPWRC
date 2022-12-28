@@ -26,6 +26,7 @@ table {
 
 .itemColumn {
   width: 30%;
+  word-wrap: break-word
 }
 
 .priceColumn {
