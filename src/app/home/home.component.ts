@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../services/product.service';
-import {UsernameService} from '../services/username.service';
 import {Router} from '@angular/router';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   products = [];
   username = '';
 
-  constructor(private productsService: ProductService, private usernameService: UsernameService, private router: Router) {
+  constructor(private productsService: ProductService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -29,7 +29,9 @@ export class HomeComponent implements OnInit {
   }
 
   setUsername() {
-    this.usernameService.currentMessage.subscribe(username => this.username = username);
+    this.userService.getAuthenticatedUser().subscribe(user => {
+      this.username = user.username;
+    });
   }
 
   getSlideTrackWidth() {

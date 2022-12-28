@@ -1,8 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {UserService} from '../../services/user.service';
-import {EventEmitter} from 'events';
-import {UsernameService} from '../../services/username.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   username = '';
 
-  constructor(private authService: AuthService, private userService: UserService, private usernameService: UsernameService) {
+  constructor(private authService: AuthService, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -21,7 +19,9 @@ export class HeaderComponent implements OnInit {
   }
 
   setUsername() {
-    this.usernameService.currentMessage.subscribe(username => this.username = username);
+    this.userService.getAuthenticatedUser().subscribe(user => {
+      this.username = user.username;
+    });
   }
 
 
