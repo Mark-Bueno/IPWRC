@@ -1,4 +1,4 @@
-<div class="loginCard">
+<div class="loginCard" *ngIf="this.loaded">
   <mat-card class="mat-card" style="background-color: white; border-radius: 20px">
     <div class="loginContainer" *ngIf="!this.productNotFound; else emptyProduct">
       <mat-card-header>

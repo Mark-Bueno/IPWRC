@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../services/product.service';
 import {Router} from '@angular/router';
-import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +13,11 @@ export class HomeComponent implements OnInit {
   products = [];
   username = '';
 
-  constructor(private productsService: ProductService, private userService: UserService, private router: Router) {
+  constructor(private productsService: ProductService, private router: Router) {
   }
 
   ngOnInit() {
     this.getProducts();
-    this.setUsername();
   }
 
   getProducts() {
@@ -28,11 +26,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  setUsername() {
-    this.userService.getAuthenticatedUser().subscribe(user => {
-      this.username = user.username;
-    });
-  }
 
   getSlideTrackWidth() {
     return this.products.length * 2;

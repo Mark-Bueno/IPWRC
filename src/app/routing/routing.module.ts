@@ -16,7 +16,7 @@ import {OrderComponent} from '../order/order.component';
 import {OrderOverviewComponent} from '../order/order-overview/order-overview.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard]},
