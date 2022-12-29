@@ -14,6 +14,7 @@ export class ProductInformationComponent implements OnInit {
   public product;
   public productId;
   public productNotFound = false;
+  public loaded = false;
 
   constructor(private router: Router, private productService: ProductService,
               private route: ActivatedRoute, private cartService: CartService,
@@ -26,6 +27,7 @@ export class ProductInformationComponent implements OnInit {
       this.productService.getProductById(params.id)
         .subscribe(
           (product: Product) => {
+            this.loaded = true;
             this.product = product;
             if (product === null) {
               this.productNotFound = true;

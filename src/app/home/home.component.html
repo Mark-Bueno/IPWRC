@@ -1,6 +1,6 @@
 <div class="upper-container">
-  <h2>Welkom {{username}}!</h2>
-  <h3> Hier krijg je de beste producten.</h3>
+  <h2>Welkom</h2>
+  <h3>Hier kies je de beste producten</h3>
   <div class="slider">
     <div class="slide-track" [style.width]="getSlideTrackWidth()">
       <div class="slide" *ngFor="let product of products" (click)="goToProduct(product)">

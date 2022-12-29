@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class CartComponent implements OnInit {
   cartProducts = [];
   totalPrice = 0;
+  loaded = false;
 
   constructor(private cartService: CartService, private router: Router) {
   }
@@ -39,6 +40,7 @@ export class CartComponent implements OnInit {
   getCartProducts() {
     this.cartService.getCartByUser().subscribe(
       (carts: any[]) => {
+        this.loaded = true;
         this.cartProducts = this.sortCartProducts(carts);
         this.totalPrice = this.calculateTotalPrice();
       }
