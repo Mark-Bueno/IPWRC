@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {UserService} from '../../services/user.service';
+import {UsernameService} from '../../services/username.service';
 
 @Component({
   selector: 'app-header',
@@ -11,11 +12,14 @@ export class HeaderComponent implements OnInit {
 
   username = '';
 
-  constructor(private authService: AuthService, private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService, private usernameService: UsernameService) {
   }
 
   ngOnInit() {
-    this.setUsername();
+    this.usernameService.getUsernameObs().subscribe(username => this.username = username);
+    if (this.authService.isLoggedIn()) {
+      this.setUsername();
+    }
   }
 
   setUsername() {
@@ -27,5 +31,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.clearLocalStorage();
+
   }
 }
