@@ -16,7 +16,6 @@ export class CartProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.data);
     this.cartProducts = this.data;
     this.totalPrice = this.calculateTotalPrice();
   }
