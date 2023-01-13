@@ -3,14 +3,14 @@ import {Observable} from 'rxjs';
 import {Product} from '../models/product.model';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from './auth.service';
-import {enviroment} from '../shared/enviroment/enviroment';
+import {environment} from '../shared/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private baseUrl = `${enviroment.baseUrl}/api/products`;
+  private baseUrl = `${environment.baseUrl}/api/products`;
 
   constructor(private http: HttpClient, private authService: AuthService) {
   }

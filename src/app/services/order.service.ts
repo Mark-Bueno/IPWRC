@@ -4,14 +4,14 @@ import {Observable} from 'rxjs';
 import {AuthService} from './auth.service';
 import {Order} from '../models/order.model';
 import {OrderProduct} from '../models/order-product.model';
-import {enviroment} from '../shared/enviroment/enviroment';
+import {environment} from '../shared/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  private baseUrl = `${enviroment.baseUrl}/api/orders`;
+  private baseUrl = `${environment.baseUrl}/api/orders`;
 
   constructor(private http: HttpClient, private authService: AuthService) {
   }

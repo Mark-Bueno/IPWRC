@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
+import {UsernameService} from '../services/username.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   authorized = true;
 
   constructor(private userService: UserService, private router: Router,
-              private authService: AuthService) {
+              private authService: AuthService, private usernameService: UsernameService) {
   }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(username, password).subscribe(async (response) => {
         const token = response.headers.get('Authorization');
         this.authService.storeToken(token);
+        this.usernameService.setUsernameObs(username);
         await this.router.navigate(['/home']).then(() => {
         });
       },
